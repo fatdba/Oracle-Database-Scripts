@@ -50,8 +50,8 @@ from   gv$sqlarea sqlarea
 where  x.sql_hash_value = sqlarea.hash_value
 and    x.sql_address    = sqlarea.address
 and    sql_text not like '%select x.inst_id,x.sid ,x.serial# ,x.username ,x.sql_id ,plan_hash_value%'
-and    x.status='ACTIVE'
 and    sql_text not like '%select :"SYS_B_00"||x.inst_id, :"SYS_B_01"||x.sid, :"SYS_B_02"||x.serial#,%'
+and    x.status='ACTIVE'
 and x.USERNAME is not null
 and x.SQL_ADDRESS    = sqlarea.ADDRESS
 and x.SQL_HASH_VALUE = sqlarea.HASH_VALUE
