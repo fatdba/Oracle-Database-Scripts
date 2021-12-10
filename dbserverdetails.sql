@@ -1,21 +1,21 @@
 WITH 
-rac AS (SELECT /*+  MATERIALIZE NO_MERGE  */ COUNT(*) instances, CASE COUNT(*) WHEN 1 THEN 'Single-instance' ELSE COUNT(*)||'-node RAC cluster' END db_type FROM gv$instance),
-mem AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(value) target FROM gv$system_parameter2 WHERE name = 'memory_target'),
-sga AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(value) target FROM gv$system_parameter2 WHERE name = 'sga_target'),
-pga AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(value) target FROM gv$system_parameter2 WHERE name = 'pga_aggregate_target'),
-db_block AS (SELECT /*+  MATERIALIZE NO_MERGE  */ value bytes FROM v$system_parameter2 WHERE name = 'db_block_size'),
-db AS (SELECT /*+  MATERIALIZE NO_MERGE  */ name, platform_name FROM v$database),
- pdbs AS (SELECT /*+  MATERIALIZE NO_MERGE  */ * FROM v$pdbs), -- need 12c flag
-inst AS (SELECT /*+  MATERIALIZE NO_MERGE  */ host_name, version db_version FROM v$instance),
-data AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(bytes) bytes, COUNT(*) files, COUNT(DISTINCT ts#) tablespaces FROM v$datafile),
-temp AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(bytes) bytes FROM v$tempfile),
-log AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(bytes) * MAX(members) bytes FROM v$log),
-control AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(block_size * file_size_blks) bytes FROM v$controlfile),
- cell AS (SELECT /*+  MATERIALIZE NO_MERGE  */ COUNT(DISTINCT cell_name) cnt FROM v$cell_state),
-core AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(value) cnt FROM gv$osstat WHERE stat_name = 'NUM_CPU_CORES'),
-cpu AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(value) cnt FROM gv$osstat WHERE stat_name = 'NUM_CPUS'),
-pmem AS (SELECT /*+  MATERIALIZE NO_MERGE  */ SUM(value) bytes FROM gv$osstat WHERE stat_name = 'PHYSICAL_MEMORY_BYTES')
-SELECT /*+  NO_MERGE  */ /* 1a.1 */
+rac AS (SELECT COUNT(*) instances, CASE COUNT(*) WHEN 1 THEN 'Single-instance' ELSE COUNT(*)||'-node RAC cluster' END db_type FROM gv$instance),
+mem AS (SELECT SUM(value) target FROM gv$system_parameter2 WHERE name = 'memory_target'),
+sga AS (SELECT SUM(value) target FROM gv$system_parameter2 WHERE name = 'sga_target'),
+pga AS (SELECT SUM(value) target FROM gv$system_parameter2 WHERE name = 'pga_aggregate_target'),
+db_block AS (SELECT value bytes FROM v$system_parameter2 WHERE name = 'db_block_size'),
+db AS (SELECT name, platform_name FROM v$database),
+ pdbs AS (SELECT * FROM v$pdbs), 
+inst AS (SELECT  host_name, version db_version FROM v$instance),
+data AS (SELECT  SUM(bytes) bytes, COUNT(*) files, COUNT(DISTINCT ts#) tablespaces FROM v$datafile),
+temp AS (SELECT  SUM(bytes) bytes FROM v$tempfile),
+log AS (SELECT SUM(bytes) * MAX(members) bytes FROM v$log),
+control AS (SELECT  SUM(block_size * file_size_blks) bytes FROM v$controlfile),
+ cell AS (SELECT COUNT(DISTINCT cell_name) cnt FROM v$cell_state),
+core AS (SELECT  SUM(value) cnt FROM gv$osstat WHERE stat_name = 'NUM_CPU_CORES'),
+cpu AS (SELECT  SUM(value) cnt FROM gv$osstat WHERE stat_name = 'NUM_CPUS'),
+pmem AS (SELECT SUM(value) bytes FROM gv$osstat WHERE stat_name = 'PHYSICAL_MEMORY_BYTES')
+SELECT 
        'Database name:' system_item, db.name system_value FROM db
 UNION ALL
  SELECT '    pdb:'||name, 'Open Mode:'||open_mode FROM pdbs -- need 12c flag
