@@ -1,5 +1,5 @@
 SELECT 
-       ROUND(100 * (s.last_number - s.min_value) / GREATEST((s.max_value - s.min_value), 1), 1) percent_used, /* requested by Mike Moehlman */
+       ROUND(100 * (s.last_number - s.min_value) / GREATEST((s.max_value - s.min_value), 1), 1) percent_used, 
        s.*
 from dba_sequences s
 where
