@@ -1,3 +1,4 @@
+-- Not my script
 -- Written by my friend Nassyam Basha from oracle ckpt dot com
 column applied_time for a30
 set linesize 140
