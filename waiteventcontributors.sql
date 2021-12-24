@@ -1,6 +1,6 @@
 WITH
 events AS (
-SELECT /*+ MATERIALIZE NO_MERGE */
+SELECT 
        SUBSTR(TRIM(h.sql_id||' '||h.program||' '||
        CASE h.module WHEN h.program THEN NULL ELSE h.module END), 1, 128) source,
        h.dbid,
