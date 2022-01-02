@@ -17,7 +17,7 @@ PROMPT-----
 PROMPT-----
 
 set linesize 200 trimspool on
-set pagesize 60
+set pagesize 50
 col username for a30
 
 col event format a30
