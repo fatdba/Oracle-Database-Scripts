@@ -13,6 +13,11 @@ select
 where s.sql_id='&SQL_ID';
 
 
+-- kill all sessions executing a bad SQL but in a RAC environment 
+SELECT 'alter system kill session '''|| SID|| ','|| SERIAL#|| ',@'|| inst_id|| ''' immediate ;'
+FROM gv$session
+WHERE sql_id = '&sql_id'
+
 
 -- Kill all sessions waiting for specific events by a specific user
 select       'alter system kill session '''|| s.SID||',' || s.serial# ||''';' 
