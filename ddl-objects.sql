@@ -12,7 +12,7 @@ PROMPT------            /              \
 PROMPT------    "The Silly Cow"
 PROMPT----- Script: ddl-objects.sql
 PROMPT----- Author: Prashant 'The FatDBA'
-PROMPT----- Version: V1.3 (Date: 04-12-2014)
+PROMPT----- Version: V1.3 (Date: 04-12-2013)
 PROMPT-----
 PROMPT-----
 PROMPT-----
