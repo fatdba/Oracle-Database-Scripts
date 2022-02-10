@@ -1,3 +1,22 @@
+PROMPT
+PROMPT
+PROMPT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROMPT------                 /)  (\
+PROMPT------            .-._((,~~.))_.-,
+PROMPT------             `-.   @@   ,-'
+PROMPT------               / ,o--o. \
+PROMPT------              ( ( .__. ) )
+PROMPT------               ) `----' (
+PROMPT------              /          \
+PROMPT------             /            \
+PROMPT------            /              \
+PROMPT------    "The Silly Cow"
+PROMPT----- Script: Fat200objects.sql
+PROMPT----- Author: Prashant 'The FatDBA'
+PROMPT----- Version: V1.1 (Date: 04-02-2007)
+PROMPT-----
+PROMPT-----
+PROMPT-----
 
 WITH schema_object AS (
 SELECT  
