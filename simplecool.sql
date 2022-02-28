@@ -29,3 +29,6 @@ and (event='latch: shared pool' or event='library cache lock') and s.USERNAME='D
 
 -- generate commands to kill all sessions from a specific user on specific instance
 select 'alter system kill session '''|| SID||',' || serial# ||''' immediate;' from gv$session where username='BAD_USER' and inst_id=1;
+
+
+alter system set events 'sql_trace [sql:8krc88r46raff]';
