@@ -30,5 +30,17 @@ and (event='latch: shared pool' or event='library cache lock') and s.USERNAME='D
 -- generate commands to kill all sessions from a specific user on specific instance
 select 'alter system kill session '''|| SID||',' || serial# ||''' immediate;' from gv$session where username='BAD_USER' and inst_id=1;
 
-
+-- To enable SQL Tracing
 alter system set events 'sql_trace [sql:8krc88r46raff]';
+
+
+
+
+-- Get current scn value:
+select current_scn from v$database;
+
+-- Get scn value at particular time:
+select timestamp_to_scn('19-JAN-08:22:00:10') from dual;
+
+-- Get timestamp from scn:
+select scn_to_timestamp(224292)from dual;
