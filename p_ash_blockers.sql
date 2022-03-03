@@ -1,5 +1,4 @@
-@big_job
-@plusenv
+
 col sid		format 99999
 col cnt		format 99
 col objid	format 99999999
@@ -36,4 +35,4 @@ order by to_char(sample_time,'MM/DD HH24:MI')
 	,SQL_ID
 ;
 
-@big_job_off
+
