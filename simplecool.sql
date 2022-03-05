@@ -44,3 +44,11 @@ select timestamp_to_scn('19-JAN-08:22:00:10') from dual;
 
 -- Get timestamp from scn:
 select scn_to_timestamp(224292)from dual;
+
+
+set line 200 pages 2000
+select * from table(dbms_xplan.display_cursor(format=>'ALLSTATS LAST, ADVANCED, +METRICS'));
+
+set line 200 pages 200
+select * from table (Dbms_xplan.display_cursor(format=>'allstats last'));
+
