@@ -35,6 +35,29 @@ alter system set events 'sql_trace [sql:8krc88r46raff]';
 
 
 
+Enable a job
+
+EXECUTE DBMS_SCHEDULER.ENABLE('SCOTT.MONTHLYBILLING');
+
+Disable a job
+
+EXECUTE DBMS_SCHEDULER.DISABLE('SCOTT.MONTHLYBILLING');
+
+Stop a running job
+
+EXECUTE DBMS_SCHEDULER.STOP_JOB('SCOTT.MONTHLYBILLING');
+
+Drop a running job
+
+EXECUTE DBMS_SCHEDULER.DROP_JOB('SCOTT.MONTHLYBILLING');
+
+Run a job immediately
+
+EXECUTE DBMS_SCHEDULER.RUN_JOB('SCOTT.MONTHLYBILLING');
+
+
+
+
 
 -- Get current scn value:
 select current_scn from v$database;
