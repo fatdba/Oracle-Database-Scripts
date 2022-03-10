@@ -75,3 +75,8 @@ select * from table(dbms_xplan.display_cursor(format=>'ALLSTATS LAST, ADVANCED, 
 set line 200 pages 200
 select * from table (Dbms_xplan.display_cursor(format=>'allstats last'));
 
+
+exec DBMS_WORKLOAD_REPOSITORY.ADD_COLORED_SQL(sql_id=>'<sql_id>'); 
+This procedure adds a colored SQL ID. If an SQL ID is colored, it will be captured in every snapshot, independent of its level of activities (so that it does not have to be a TOP SQL). 
+Capture occurs if the SQL is found in the cursor cache at snapshot time. To uncolor the SQL, invoke the REMOVE_COLORED_SQL Procedure. 
+
