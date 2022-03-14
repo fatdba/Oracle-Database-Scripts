@@ -35,6 +35,17 @@ alter system set events 'sql_trace [sql:8krc88r46raff]';
 
 
 
+
+-- Index Rebuild
+SELECT 'ALTER INDEX ' || a.index_name || ' REBUILD;'
+FROM   all_indexes a
+WHERE  index_name  = DECODE(Upper('&1'),'ALL',a.index_name,Upper('&1'))
+AND    table_owner = Upper('&2')
+ORDER BY 1
+/
+
+
+
 Enable a job
 
 EXECUTE DBMS_SCHEDULER.ENABLE('SCOTT.MONTHLYBILLING');
