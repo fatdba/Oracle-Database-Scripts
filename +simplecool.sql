@@ -91,3 +91,13 @@ exec DBMS_WORKLOAD_REPOSITORY.ADD_COLORED_SQL(sql_id=>'<sql_id>');
 This procedure adds a colored SQL ID. If an SQL ID is colored, it will be captured in every snapshot, independent of its level of activities (so that it does not have to be a TOP SQL). 
 Capture occurs if the SQL is found in the cursor cache at snapshot time. To uncolor the SQL, invoke the REMOVE_COLORED_SQL Procedure. 
 
+
+
+-- Identify and kill sessions
+select ‘alter system kill session ‘||’ ‘||””||s.sid||’,’||s.serial# ||”’ immediate;’ FROM v$session s
+WHERE s.type!= ‘BACKGROUND’
+AND S.TYPE=’USER’
+AND S.USERNAME='<SCHEMA NAME>’
+AND TRUNC(S.LOGON_TIME) < ’28-JUN-2018′
+AND S.STATUS=’INACTIVE’
+— and last_call_et > 30 — more than 30 mins inactive
