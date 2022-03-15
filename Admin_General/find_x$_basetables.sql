@@ -1,0 +1,528 @@
+select * from (
+  select
+    substr(lower(view_name), 1, 500) view_name,
+    regexp_replace(
+      regexp_replace(lower(view_definition), '.*?(x\$[a-z_]+)', '\1 - '),
+     '(.*) - .*?$', '\1'
+    ) x
+  from
+    v$fixed_view_definition
+)
+where
+  x like '%x$%'
+order by
+  view_name;
+--
+-- go$sql_bind_capture            x$kqlfbc
+-- gv$_lock                       x$ktadm - x$ktatrfil - x$ktatrfsl - x$ktatl - x$ktstusc - x$ktstuss - x$ktstusg - x$ktcxb
+-- gv$_lock1                      x$kdnssf - x$ksqeq
+-- gv$_resumable2                 x$ktrso
+-- gv$_sequences                  x$kglob
+-- gv$access                      x$ksuse - x$kglob - x$kgldp - x$kgllk
+-- gv$active_instances            x$ksimsi
+-- gv$active_services             x$kswsastab
+-- gv$active_sess_pool_mth        x$kgskasp
+-- gv$advisor_current_sqlplan     x$kesplan
+-- gv$advisor_progress            x$ksulop
+-- gv$alert_types                 x$keltsd - x$keltosd - x$keltgsd
+-- gv$aq1                         x$kwqsi
+-- gv$archive                     x$kccle - x$kccdi
+-- gv$archive_dest                x$krstdest
+-- gv$archive_dest_status         x$kcrrdstat
+-- gv$archive_gap                 x$kccfe - x$kccfe
+-- gv$archive_processes           x$kcrrarch
+-- gv$archived_log                x$kccal
+-- gv$ash_info                    x$kewam
+-- gv$asm_acfs_encryption_info    x$kfvacfsencr
+-- gv$asm_acfs_security_info      x$kfvacfsrealm
+-- gv$asm_acfssnapshots           x$kfvacfss
+-- gv$asm_acfsvolumes             x$kfvacfsv
+-- gv$asm_alias                   x$kfals
+-- gv$asm_attribute               x$kfenv
+-- gv$asm_client                  x$kfncl
+-- gv$asm_disk                    x$kfdsk - x$kfkid
+-- gv$asm_disk_iostat             x$kfnsdskiost
+-- gv$asm_disk_stat               x$kfdsk_stat - x$kfkid
+-- gv$asm_diskgroup               x$kfgrp
+-- gv$asm_diskgroup_stat          x$kfgrp_stat
+-- gv$asm_file                    x$kffil
+-- gv$asm_filesystem              x$kfvacfs
+-- gv$asm_operation               x$kfgmg - x$kfgmg - x$kfgmg - x$kfgmg - x$kfgmg - x$kfgmg - x$kfgbrb - x$kfgmg
+-- gv$asm_template                x$kftmta
+-- gv$asm_user                    x$kfzudr
+-- gv$asm_usergroup               x$kfzgdr
+-- gv$asm_usergroup_member        x$kfzuagr
+-- gv$asm_volume                  x$kffil - x$kfvol
+-- gv$asm_volume_stat             x$kfvol - x$kfvolstat
+-- gv$aw_aggregate_op             x$xsagop
+-- gv$aw_allocate_op              x$xsagop
+-- gv$aw_calc                     x$xsaggr
+-- gv$aw_longops                  x$xslongops
+-- gv$aw_olap                     x$ksuse - x$xsawso
+-- gv$aw_session_info             x$xssinfo
+-- gv$backup                      x$kcvfhonl
+-- gv$backup_async_io             x$ksfqp
+-- gv$backup_corruption           x$kccfc
+-- gv$backup_datafile             x$kccbf
+-- gv$backup_device               x$ksfqdvnt
+-- gv$backup_piece                x$kccbp
+-- gv$backup_redolog              x$kccbl
+-- gv$backup_set                  x$kccbs
+-- gv$backup_spfile               x$kccbi
+-- gv$backup_sync_io              x$ksfqp
+-- gv$bgprocess                   x$ksbdp - x$ksbdd
+-- gv$bh                          x$bh - x$le
+-- gv$blocking_quiesce            x$kgskvft
+-- gv$bsp                         x$kclcrst
+-- gv$buffer_pool                 x$kcbwbpd
+-- gv$buffer_pool_statistics      x$kcbwds - x$kcbwbpd
+-- gv$buffered_publishers         x$buffered_publishers
+-- gv$buffered_queues             x$buffered_queues
+-- gv$buffered_subscribers        x$knstcaps - x$knstcaps - x$buffered_subscribers - x$buffered_queues
+-- gv$calltag                     x$kywmnf
+-- gv$cell                        x$cell_name
+-- gv$cell_config                 x$kcfisossc
+-- gv$cell_request_totals         x$kcfisosst
+-- gv$cell_state                  x$kcfisoss
+-- gv$cell_thread_history         x$kcfisossn
+-- gv$circuit                     x$kmcvc
+-- gv$client_result_cache_stats   x$kpoqsta
+-- gv$client_stats                x$kewecls - x$kewssmap
+-- gv$cluster_interconnects       x$skgxpia
+-- gv$configured_interconnects    x$ksxpia
+-- gv$context                     x$context
+-- gv$controlfile                 x$kcccf
+-- gv$controlfile_record_section  x$kccrs
+-- gv$copy_corruption             x$kcccc
+-- gv$corrupt_xid_list            x$ktucus
+-- gv$cpool_cc_info               x$kpplcc_info
+-- gv$cpool_cc_stats              x$kpplcc_stats
+-- gv$cpool_conn_info             x$kpplconn_info - x$kmpcso
+-- gv$cpool_stats                 x$kpplcp_stats
+-- gv$cr_block_server             x$kclcrst
+-- gv$current_block_server        x$kclcurst
+-- gv$database                    x$kccdi - x$kccdi
+-- gv$database_block_corruption   x$kccblkcor
+-- gv$database_incarnation        x$kccic
+-- gv$database_key_info           x$kcbdbk
+-- gv$datafile                    x$kcvdf
+-- gv$datafile_copy               x$kccdc
+-- gv$datafile_header             x$kcvfh
+-- gv$dataguard_config            x$krstdgc
+-- gv$dataguard_stats             x$krstpvrs
+-- gv$dataguard_status            x$krstalg
+-- gv$datapump_job                x$kupvj
+-- gv$datapump_session            x$kupva
+-- gv$db_cache_advice             x$kcbsc - x$kcbwbpd
+-- gv$db_object_cache             x$kglob
+-- gv$db_pipes                    x$kglob
+-- gv$db_transportable_platform   x$kcpxpl - x$kcpxpl - x$kccdi
+-- gv$dbfile                      x$kccfn
+-- gv$dblink                      x$uganco
+-- gv$deleted_object              x$kccdl
+-- gv$detached_session            x$ksupgs
+-- gv$diag_info                   x$diag_info
+-- gv$dispatcher                  x$kmmdi
+-- gv$dispatcher_config           x$kmmdp
+-- gv$dispatcher_rate             x$kmmdi
+-- gv$dlm_convert_local           x$kjicvt
+-- gv$dlm_convert_remote          x$kjicvt
+-- gv$dlm_misc                    x$kjisft
+-- gv$dlm_ress                    x$kjirft - x$kjbr
+-- gv$dlm_traffic_controller      x$kjitrft
+-- gv$dnfs_channels               x$dnfs_channels
+-- gv$dnfs_files                  x$dnfs_files
+-- gv$dnfs_servers                x$dnfs_servers
+-- gv$dnfs_stats                  x$dnfs_stats
+-- gv$dynamic_remaster_stats      x$kjdrmafnstats
+-- gv$emon                        x$kponestat
+-- gv$enabledprivs                x$kzspr
+-- gv$encrypted_tablespaces       x$kcbtek
+-- gv$encryption_wallet           x$kzekmencwal
+-- gv$enqueue_lock                x$ksqeq - x$ksuse - x$ksqrs
+-- gv$enqueue_stat                x$ksqst
+-- gv$enqueue_statistics          x$ksqst - x$ksqeqtyp
+-- gv$event_histogram             x$kslseshist - x$ksled
+-- gv$event_name                  x$ksled
+-- gv$eventmetric                 x$kewmevmv
+-- gv$execution                   x$kstex
+-- gv$fast_start_servers          x$ktprxrs
+-- gv$fast_start_transactions     x$ktprxrt - x$kturhist
+-- gv$file_cache_transfer         x$kcfio - x$kccfe
+-- gv$file_histogram              x$kcfiohist - x$kccfe - x$kccfn
+-- gv$file_optimized_histogram    x$kcfiofchist - x$kccfe
+-- gv$file_ping                   x$kcfio - x$kccfe
+-- gv$filemetric                  x$kewmflmv
+-- gv$filemetric_history          x$kewmflmv
+-- gv$filespace_usage             x$kttefinfo
+-- gv$filestat                    x$kcfio - x$kccfe - x$kccfn
+-- gv$fixed_table                 x$kqfta - x$kqfvi - x$kqfdt
+-- gv$fixed_view_definition       x$kqfvi - x$kqfvt
+-- gv$flashback_database_log      x$krfblog - x$kccfle
+-- gv$flashback_database_logfile  x$kccfn - x$kccfle
+-- gv$flashback_database_stat     x$krfgstat
+-- gv$foreign_archived_log        x$kccrl
+-- gv$fs_failover_histogram       x$rfahist
+-- gv$fs_failover_stats           x$rfafo
+-- gv$gc_element                  x$le
+-- gv$gcshvmaster_info            x$kjdrpcmhv
+-- gv$gcspfmaster_info            x$kjdrpcmpf
+-- gv$ges_enqueue                 x$kjilkft - x$kjbl
+-- gv$global_transaction          x$k
+-- gv$globalcontext               x$globalcontext
+-- gv$hang_statistics             x$kjznhngstats
+-- gv$hm_check                    x$dbkh_check
+-- gv$hm_check_param              x$dbkh_check_param
+-- gv$hm_finding                  x$dbkfdg
+-- gv$hm_info                     x$dbkinfo
+-- gv$hm_recommendation           x$dbkreco
+-- gv$hm_run                      x$dbkrun
+-- gv$hs_agent                    x$hs_session
+-- gv$hs_parameter                x$hs_session - x$hofp
+-- gv$hs_session                  x$hs_session
+-- gv$hvmaster_info               x$kjdrhv
+-- gv$incmeter_config             x$dbkincmetcfg
+-- gv$incmeter_info               x$dbkincmetinfo
+-- gv$incmeter_summary            x$dbkincmetsummary
+-- gv$indexed_fixed_column        x$kqfco - x$kqfta
+-- gv$instance                    x$ksuxsinst - x$kvit - x$quiesce
+-- gv$instance_cache_transfer     x$instance_cache_transfer
+-- gv$instance_recovery           x$ksusgsta - x$ksusgsta - x$kctlax - x$targetrba - x$estimated_mttr - x$kcticw
+-- gv$io_calibration_status       x$kkkicr
+-- gv$iofuncmetric                x$kewmiofmv
+-- gv$iofuncmetric_history        x$kewmiofmv
+-- gv$iostat_consumer_group       x$ksfdstcg - x$kgskcft
+-- gv$iostat_file                 x$ksfdstfile - x$kccfe - x$ksfdstfile - x$kcctf
+-- gv$iostat_function             x$ksfdstcmp
+-- gv$iostat_function_detail      x$ksfdstcmp
+-- gv$iostat_network              x$ksrpcios
+-- gv$ir_failure                  x$dbkfdg
+-- gv$ir_failure_set              x$dbkfset
+-- gv$ir_manual_checklist         x$dbkreco
+-- gv$ir_repair                   x$dbkreco
+-- gv$java_library_cache_memory   x$kgljmem - x$kgljmem
+-- gv$java_pool_advice            x$kgljsim
+-- gv$javapool                    x$ksmjch
+-- gv$latch                       x$kslltr
+-- gv$latch_children              x$kslltr_children
+-- gv$latch_misses                x$ksllw - x$kslwsc
+-- gv$latch_parent                x$kslltr_parent
+-- gv$latchholder                 x$ksuprlat
+-- gv$latchname                   x$kslld
+-- gv$libcache_locks              x$kgllk - x$kglpn
+-- gv$library_cache_memory        x$kglmem - x$kglmem
+-- gv$librarycache                x$kglst
+-- gv$license                     x$ksull
+-- gv$listener_network            x$kmmnv
+-- gv$loadistat                   x$klcie
+-- gv$loadpstat                   x$klpt
+-- gv$lobstat                     x$lobstat
+-- gv$lock                        x$ksuse - x$ksqrs
+-- gv$lock_element                x$le
+-- gv$lock_type                   x$ksirestyp - x$ksqeqtyp
+-- gv$locked_object               x$ktcxb - x$ktadm - x$ksuse
+-- gv$log                         x$kccle - x$kccrt
+-- gv$log_history                 x$kcclh - x$kcclh
+-- gv$logfile                     x$kccfn
+-- gv$loghist                     x$kcclh
+-- gv$logmnr_callback             x$logmnr_callback
+-- gv$logmnr_contents             x$logmnr_contents
+-- gv$logmnr_dba_objects          x$logmnr_obj - x$logmnr_user - x$logmnr_ind
+-- gv$logmnr_dictionary           x$logmnr_dictionary
+-- gv$logmnr_dictionary_load      x$logmnr_dictionary_load
+-- gv$logmnr_extents              x$logmnr_uet - x$logmnr_file - x$logmnr_ktfbue - x$logmnr_file
+-- gv$logmnr_latch                x$logmnr_latch
+-- gv$logmnr_logfile              x$logmnr_logfile
+-- gv$logmnr_logs                 x$logmnr_logs
+-- gv$logmnr_parameters           x$logmnr_parameters
+-- gv$logmnr_process              x$logmnr_process
+-- gv$logmnr_region               x$logmnr_region
+-- gv$logmnr_session              x$logmnr_session
+-- gv$logmnr_stats                x$krvxsv
+-- gv$logmnr_sys_dba_segs         x$logmnr_user - x$logmnr_obj - x$logmnr_ts - x$logmnr_seg - x$logmnr_file - x$logmnr_user - x$logmnr_ts - x$logmnr_undo - x$logmnr_seg - x$logmnr_file - x$logmnr_user - x$logmnr_ts - x$logmnr_seg - x$logmnr_file
+-- gv$logmnr_sys_objects          x$logmnr_tab - x$logmnr_tabpart - x$logmnr_clu - x$logmnr_ind - x$logmnr_indpart - x$logmnr_lob - x$logmnr_tabsubpart - x$logmnr_indsubpart - x$logmnr_lobfrag
+-- gv$logmnr_transaction          x$krvxtx
+-- gv$logstdby                    x$krvslv - x$knstacr
+-- gv$logstdby_process            x$krvslv - x$knstacr
+-- gv$logstdby_progress           x$krvslvpg
+-- gv$logstdby_state              x$krvslvst
+-- gv$logstdby_stats              x$krvslvs - x$krvxsv - x$krvslvs - x$knstacr
+-- gv$logstdby_transaction        x$krvslvs - x$krvxtx
+-- gv$managed_standby             x$krssms
+-- gv$map_comp_list               x$ksfmcompl
+-- gv$map_element                 x$ksfmelem
+-- gv$map_ext_element             x$ksfmextelem
+-- gv$map_file                    x$ksfmfile
+-- gv$map_file_extent             x$ksfmfileext
+-- gv$map_file_io_stack           x$ksfmiost
+-- gv$map_library                 x$ksfmlib
+-- gv$map_subelement              x$ksfmsubelem
+-- gv$max_active_sess_target_mth  x$kgskasp
+-- gv$memory_current_resize_ops   x$kmgsct
+-- gv$memory_dynamic_components   x$kmgsct
+-- gv$memory_resize_ops           x$kmgsop - x$kmgsct
+-- gv$memory_target_advice        x$kmgsbsmemadv
+-- gv$metric                      x$kewmdrmv
+-- gv$metric_history              x$kewmdrmv
+-- gv$metricgroup                 x$kewmgsm
+-- gv$metricname                  x$kewmdsm - x$kewmgsm
+-- gv$mttr_target_advice          x$kcbmmav
+-- gv$mutex_sleep                 x$mutex_sleep
+-- gv$mutex_sleep_history         x$mutex_sleep_history
+-- gv$mvrefresh                   x$knstmvr
+-- gv$mystat                      x$ksumysta - x$ksusgif
+-- gv$nfs_clients                 x$nfsclients
+-- gv$nfs_locks                   x$nfslocks
+-- gv$nfs_open_files              x$nfsopens
+-- gv$nls_parameters              x$nls_parameters
+-- gv$nls_valid_values            x$ksulv
+-- gv$object_dependency           x$kglob - x$kgldp
+-- gv$object_dml_frequencies      x$ksxm_dft
+-- gv$obsolete_parameter          x$ksppo
+-- gv$offline_range               x$kccor - x$kccor
+-- gv$open_cursor                 x$kgllk
+-- gv$option                      x$option
+-- gv$osstat                      x$ksucpustat - x$ksuvmstat - x$ksunetstat
+-- gv$parallel_degree_limit_mth   x$kgskdopp
+-- gv$parameter                   x$ksppi - x$ksppcv
+-- gv$parameter2                  x$ksppi - x$ksppcv
+-- gv$parameter_valid_values      x$kspvld_values
+-- gv$persistent_publishers       x$persistent_publishers - x$persistent_queues
+-- gv$persistent_qmn_cache        x$kwqmnjit
+-- gv$persistent_queues           x$persistent_queues
+-- gv$persistent_subscribers      x$persistent_subscribers - x$persistent_queues
+-- gv$pga_target_advice           x$qesmmapadv
+-- gv$pga_target_advice_histogram x$qesmmahist
+-- gv$pgastat                     x$qesmmsga
+-- gv$policy_history              x$policy_history
+-- gv$pq_sesstat                  x$kxfpsst
+-- gv$pq_slave                    x$kxfpdp
+-- gv$pq_sysstat                  x$kxfpys
+-- gv$pq_tqstat                   x$kxfqsrow
+-- gv$process                     x$ksupr
+-- gv$process_group               x$ksupgp
+-- gv$process_memory              x$ksmpgst
+-- gv$process_memory_detail       x$ksmpgdst
+-- gv$process_memory_detail_prog  x$ksmpgdp
+-- gv$propagation_receiver        x$kwqpd
+-- gv$propagation_sender          x$kwqps - x$buffered_queues
+-- gv$proxy_archivedlog           x$kccpa
+-- gv$proxy_datafile              x$kccpd
+-- gv$pwfile_users                x$kzsrt
+-- gv$px_buffer_advice            x$kxfpns
+-- gv$px_instance_group           x$kxfppig - x$kxfpig
+-- gv$px_process                  x$kxfpdp
+-- gv$px_process_sysstat          x$kxfpns
+-- gv$px_session                  x$ksuse - x$kxfpdp
+-- gv$px_sesstat                  x$ksuse - x$kxfpdp - x$ksusesta - x$ksusgif
+-- gv$qmon_coordinator_stats      x$kwqmnc
+-- gv$qmon_server_stats           x$kwqmntaskstat - x$kwqmntaskstat - x$kwqmnsctx - x$kwqmnc
+-- gv$qmon_task_stats             x$kwqmntaskstat
+-- gv$qmon_tasks                  x$kwqmntask - x$kwqmntaskstat
+-- gv$queue                       x$kmcqs
+-- gv$queueing_mth                x$kgskquep
+-- gv$recover_file                x$kcvfhmrr
+-- gv$recovery_file_status        x$kcrmx - x$kccfn - x$kccfe - x$kcrmf
+-- gv$recovery_log                x$kcclh - x$kccal - x$kcvfhmrr - x$kccle - x$kcvfhmrr
+-- gv$recovery_progress           x$ksulop - x$ksulop
+-- gv$recovery_status             x$kcrmx - x$kcrfx
+-- gv$redo_dest_resp_histogram    x$kcrrnhg
+-- gv$replprop                    x$knstrpp
+-- gv$replqueue                   x$knstrqu
+-- gv$reqdist                     x$kmmrd
+-- gv$reserved_words              x$kwddef
+-- gv$resource                    x$ksqrs
+-- gv$resource_limit              x$ksurlmt
+-- gv$restore_point               x$kccrsp - x$kccnrs
+-- gv$result_cache_dependency     x$qesrcdep
+-- gv$result_cache_dr             x$qesrcdr
+-- gv$result_cache_memory         x$qesrcmem
+-- gv$result_cache_objects        x$qesrcobj
+-- gv$result_cache_rd             x$qesrcrd
+-- gv$result_cache_rr             x$qesrcrr
+-- gv$result_cache_statistics     x$qesrcsta
+-- gv$resumable                   x$ktrso
+-- gv$rfs_thread                  x$krfsthrd
+-- gv$rman_compression_algorithm  x$krbmca
+-- gv$rman_configuration          x$kccrm
+-- gv$rman_encryption_algorithms  x$krbza
+-- gv$rman_output                 x$krbmrot
+-- gv$rman_status_current         x$krbmrst
+-- gv$rollstat                    x$kturd
+-- gv$rowcache                    x$kqrst
+-- gv$rowcache_parent             x$kqrfp
+-- gv$rowcache_subordinate        x$kqrfs
+-- gv$rsrc_cons_group_history     x$kgskscs
+-- gv$rsrc_consumer_group         x$kgskcft - x$ksfdstcg
+-- gv$rsrc_consumer_group_cpu_mth x$kgskcp
+-- gv$rsrc_plan                   x$kgskpft - x$kgskpft
+-- gv$rsrc_plan_cpu_mth           x$kgskpp
+-- gv$rsrc_plan_history           x$kskplw
+-- gv$rsrc_session_info           x$kgskvft
+-- gv$rsrcmgrmetric               x$kewmrmgmv - x$kskplw - x$kgskscs
+-- gv$rsrcmgrmetric_history       x$kewmrmgmv - x$kskplw - x$kgskscs
+-- gv$rule                        x$rule
+-- gv$rule_set                    x$rule_set
+-- gv$rule_set_aggregate_stats    x$kwrsnv
+-- gv$scheduler_running_jobs      x$jskslv
+-- gv$securefile_timer            x$kdlu_stat
+-- gv$segment_statistics          x$ksolsfts - x$ksolsfts - x$ktsso
+-- gv$segspace_usage              x$ktsspu
+-- gv$segstat                     x$ksolsfts
+-- gv$segstat_name                x$ksolsstat
+-- gv$serv_mod_act_stats          x$kewesmas - x$kewssmap - x$kewesms - x$kewssmap
+-- gv$service_event               x$kswsevtab - x$ksled
+-- gv$service_stats               x$kewssvcv - x$kewssmap
+-- gv$service_wait_class          x$kswsclstab
+-- gv$servicemetric               x$kewmsvcmv - x$kswsastab
+-- gv$servicemetric_history       x$kewmsvcmv - x$kswsastab
+-- gv$services                    x$kswsastab
+-- gv$ses_optimizer_env           x$qksceses
+-- gv$sess_io                     x$ksusio
+-- gv$sess_time_model             x$kewssmap - x$kewssesv
+-- gv$session_blockers            x$ksdhng_session_blockers
+-- gv$session_client_result_cache x$kmpcso - x$ksusecon - x$ksuse
+-- gv$session_connect_info        x$ksusecon
+-- gv$session_cursor_cache        x$kgscc
+-- gv$session_event               x$ksles - x$ksled
+-- gv$session_fix_control         x$qksbgses
+-- gv$session_longops             x$ksulop
+-- gv$session_object_cache        x$kocst
+-- gv$session_wait                x$kslwt - x$ksled
+-- gv$session_wait_class          x$kslcs
+-- gv$session_wait_history        x$kslwh
+-- gv$sessmetric                  x$kewmsemv
+-- gv$sesstat                     x$ksusesta - x$ksusgif
+-- gv$sga                         x$ksmsd
+-- gv$sga_current_resize_ops      x$kmgsct
+-- gv$sga_dynamic_components      x$kmgsct
+-- gv$sga_dynamic_free_memory     x$ksmge - x$kmgsct
+-- gv$sga_resize_ops              x$kmgsop - x$kmgsct
+-- gv$sga_target_advice           x$kmgsbsadv
+-- gv$sgainfo                     x$ksmsgmem
+-- gv$sgastat                     x$ksmfs - x$ksmss - x$ksmls - x$ksmjs - x$ksmns - x$ksmstrs
+-- gv$shared_pool_advice          x$kglsim
+-- gv$shared_pool_reserved        x$ksmspr - x$ksmspr - x$kghlu
+-- gv$shared_server               x$kmmsi
+-- gv$shared_server_monitor       x$kmmsg
+-- gv$sort_segment                x$ktstssd
+-- gv$sort_usage                  x$ktsso - x$ktsso
+-- gv$spparameter                 x$kspspfile
+-- gv$sql                         x$kglcursor_child
+-- gv$sql_bind_data               x$kxsbd
+-- gv$sql_bind_metadata           x$kksbv
+-- gv$sql_cs_histogram            x$kkocs_histogram
+-- gv$sql_cs_selectivity          x$kkocs_selectivity
+-- gv$sql_cs_statistics           x$kkocs_statistics
+-- gv$sql_cursor                  x$kxscc
+-- gv$sql_feature                 x$qksfm
+-- gv$sql_feature_dependency      x$qksfmdep
+-- gv$sql_feature_hierarchy       x$qksfmprt
+-- gv$sql_hint                    x$qksht
+-- gv$sql_join_filter             x$qesblstat
+-- gv$sql_monitor                 x$keswxmon
+-- gv$sql_optimizer_env           x$kqlfsqce
+-- gv$sql_plan                    x$kqlfxpl
+-- gv$sql_plan_monitor            x$keswxmon_plan
+-- gv$sql_plan_statistics         x$qesrstat
+-- gv$sql_plan_statistics_all     x$qesrstatall
+-- gv$sql_redirection             x$kglcursor_child - x$kkssrd
+-- gv$sql_shared_memory           x$kglcursor - x$ksmhp
+-- gv$sql_workarea                x$qksmmwds
+-- gv$sql_workarea_active         x$qesmmiwt
+-- gv$sql_workarea_histogram      x$qesmmiwh
+-- gv$sqlarea                     x$kglcursor_child_sqlid
+-- gv$sqlarea_plan_hash           x$kglcursor_child_sqlidph
+-- gv$sqlcommand                  x$oct
+-- gv$sqlfn_arg_metadata          x$oparg
+-- gv$sqlfn_metadata              x$operators - x$opversion - x$opdesc
+-- gv$sqlpa_metric                x$kesspamet
+-- gv$sqlstats                    x$kkssqlstat
+-- gv$sqlstats_plan_hash          x$kkssqlstat_plan_hash
+-- gv$sqltext                     x$kglna
+-- gv$sqltext_with_newlines       x$kglna
+-- gv$sscr_sessions               x$ksusm
+-- gv$standby_log                 x$kccsl
+-- gv$statistics_level            x$prmsltyx
+-- gv$statname                    x$ksusd
+-- gv$streams_apply_coordinator   x$knstasl - x$knstacr
+-- gv$streams_apply_reader        x$ksusd - x$ksusesta - x$ksuse - x$ksusgif - x$knstasl
+-- gv$streams_apply_server        x$knstasl
+-- gv$streams_capture             x$ksusd - x$ksusesta - x$ksuse - x$ksusgif - x$knstcap
+-- gv$streams_message_tracking    x$knstmt
+-- gv$streams_pool_advice         x$knlarow
+-- gv$streams_pool_statistics     x$knlasg
+-- gv$streams_transaction         x$knsttxn
+-- gv$subcache                    x$kqlset
+-- gv$subscr_registration_stats   x$kkcnrstat
+-- gv$sys_optimizer_env           x$qkscesys
+-- gv$sys_time_model              x$kewssmap - x$kewssysv
+-- gv$sysaux_occupants            x$kewxocf
+-- gv$sysmetric                   x$kewmdrmv
+-- gv$sysmetric_history           x$kewmdrmv
+-- gv$sysmetric_summary           x$kewmsmdv
+-- gv$sysstat                     x$ksusgsta
+-- gv$system_cursor_cache         x$kgics
+-- gv$system_event                x$kslei - x$ksled
+-- gv$system_fix_control          x$qksbgsys
+-- gv$system_parameter            x$ksppi - x$ksppsv
+-- gv$system_parameter2           x$ksppi - x$ksppsv
+-- gv$system_parameter3           x$ksppi - x$ksppsv
+-- gv$system_parameter4           x$ksppi - x$ksppsv
+-- gv$system_wait_class           x$kslscs
+-- gv$tablespace                  x$kccts
+-- gv$temp_cache_transfer         x$kcftio - x$kcctf
+-- gv$temp_extent_map             x$ktftme
+-- gv$temp_extent_pool            x$ktstfc
+-- gv$temp_ping                   x$kcftio - x$kcctf
+-- gv$temp_space_header           x$ktfthc
+-- gv$tempfile                    x$kcctf - x$kccfn - x$kcvfhtmp
+-- gv$temporary_lobs              x$kdlt - x$abstract_lob
+-- gv$tempstat                    x$kcftio - x$kcctf
+-- gv$thread                      x$kccrt - x$kcctir - x$kcccp
+-- gv$threshold_types             x$kelrtd - x$keltosd
+-- gv$timer                       x$ksutm
+-- gv$timezone_file               x$timezone_file
+-- gv$timezone_names              x$timezone_names
+-- gv$toplevelcall                x$orafn
+-- gv$transaction                 x$ktcxb
+-- gv$transaction_enqueue         x$ktcxb - x$ksuse - x$ksqrs
+-- gv$transportable_platform      x$kcpxpl
+-- gv$tsm_sessions                x$ksusm
+-- gv$type_size                   x$kqfsz
+-- gv$undostat                    x$ktusmst
+-- gv$version                     x$version
+-- gv$vpd_policy                  x$kglcursor_child - x$kzrtpd
+-- gv$waitclassmetric             x$kewmevmv
+-- gv$waitclassmetric_history     x$kewmevmv
+-- gv$waitstat                    x$kcbwait
+-- gv$wallet                      x$kzekmfvw
+-- gv$wlm_pc_stats                x$kewepcs - x$kewssmap - x$kywmpctab
+-- gv$wlm_pcmetric_history        x$kewmwpcmv - x$kywmpctab
+-- gv$workload_replay_thread      x$kecprt
+-- gv$xml_audit_trail             x$xml_audit_trail
+-- gv$xstream_outbound_server     x$ksusd - x$ksusesta - x$ksuse - x$ksusgif - x$knstasl - x$ksusd - x$ksusesta - x$ksuse - x$ksusgif - x$knstcaps
+-- gv$xstream_table_stats         x$knstxsts
+-- v$aw_aggregate_op              x$xsagop
+-- v$aw_allocate_op               x$xsagop
+-- v$block_change_tracking        x$kccdi - x$kccfn - x$krcfh
+-- v$context                      x$context
+-- v$dataguard_config             x$krstdgc
+-- v$db_transportable_platform    x$kcpxpl - x$kcpxpl - x$kccdi
+-- v$diag_critical_error          x$dbkece
+-- v$flashback_txn_graph          x$ktftbtxngraph
+-- v$flashback_txn_mods           x$ktftbtxnmods
+-- v$hang_info                    x$kjznhangs - x$ksled - x$kjznrslnrc
+-- v$hang_session_info            x$kjznhangses - x$ksled - x$kjznhangs - x$kjznrslnrc
+-- v$nfs_clients                  x$nfsclients
+-- v$nfs_locks                    x$nfslocks
+-- v$nfs_open_files               x$nfsopens
+-- v$object_dml_frequencies       x$ksxm_dft
+-- v$object_privilege             x$kzpopr
+-- v$recovery_area_usage          x$krasga - x$krasga - x$krasga
+-- v$recovery_file_dest           x$kccrdi - x$krfblog - x$kccrl - x$krasga
+-- v$rman_status                  x$kccrsr - x$kccrsr - x$ksfqp - x$kccrsr - x$ksfqp
+-- v$standby_event_histogram      x$krdevthist
+-- v$transportable_platform       x$kcpxpl
+-- v$undostat                     x$ktusmst
+-- v$wait_chains                  x$ksdhng_chains
