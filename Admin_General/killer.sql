@@ -9,3 +9,23 @@ end loop;
 end;
 /
 
+
+-- kill user
+set line 200 pages 2000
+select 'alter system kill session '''||sid||','||serial#||''' immediate;' from v$session where username='&USER';
+
+-- kill SQL ID
+select 'alter system kill session '||''''||sid||','||serial#||''''||' immediate ;' from v$session where sql_id = '&sql_id' ;
+
+
+-- Kill SID
+undef sid
+select 'alter system kill session ''' || sid || ',' || serial# || ''' immediate;' from v$session where
+sid = &sid
+/
+
+
+-- Kill Module
+select 'alter system kill session '||''''||sid||','||serial#||''''||' immediate ;' from v$session where module ='&module';
+
+
