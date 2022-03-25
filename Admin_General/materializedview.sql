@@ -1,0 +1,12 @@
+SELECT * 
+FROM ( SELECT OWNER, 
+              MVIEW_NAME, 
+              CONTAINER_NAME, 
+              REFRESH_MODE, 
+              LAST_REFRESH_TYPE, 
+              STALENESS, 
+              round((LAST_REFRESH_END_TIME-LAST_REFRESH_DATE)*24*60,2) as REFRESH_TIME_MINS 
+       FROM ALL_MVIEWS 
+       WHERE LAST_REFRESH_TYPE IN ('FAST','COMPLETE')
+     ) 
+ORDER BY REFRESH_TIME_MINS DESC;
