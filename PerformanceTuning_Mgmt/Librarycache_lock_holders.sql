@@ -8,6 +8,7 @@ and gv$session.saddr=x$kglpn.kglpnuse ;
 PROMPT Detect Library Cache holders that sessions are waiting for
 
 -- Detect sessions waiting for a Library Cache Locks
+--
 
 select sid Waiter, p1raw,
 substr(rawtohex(p1),1,30) Handle,
