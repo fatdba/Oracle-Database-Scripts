@@ -29,4 +29,4 @@ select value blksz
   where name = 'db_block_size' 
 ;
 alter session set nls_date_format = 'YYYY/MM/DD HH24:MI:SS';
-set termout on
+set termout on 
