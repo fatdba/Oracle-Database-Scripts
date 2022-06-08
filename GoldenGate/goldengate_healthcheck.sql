@@ -1,5 +1,5 @@
 REM
-REM This healthcheck script is for use on Oracle12c (12.1.0.2) databases only.  
+REM This healthcheck script is for use on Oracle 12c (12.1.0.2) databases only. 
 REM 
 REM
 REM This script should be run by  SYS on the instance running the integrated extract, 
