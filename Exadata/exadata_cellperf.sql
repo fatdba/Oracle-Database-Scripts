@@ -1,4 +1,4 @@
--- This is not written by me and is a Oracle provided script 
+-- This is not written by me and is a Oracle provided script but its great to use
 -- NAME: CELLPERFDIAG.SQL
 -- ------------------------------------------------------------------------
 -- AUTHOR: Michael Polaski - Oracle Support Services
