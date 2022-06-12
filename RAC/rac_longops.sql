@@ -4,7 +4,7 @@ COLUMN serial# FORMAT 9999999
 COLUMN machine FORMAT A30
 COLUMN progress_pct FORMAT 99999999.00
 COLUMN elapsed FORMAT A10
-COLUMN remaining FORMAT A10
+COLUMN remaining FORMAT A12
 
 SELECT s.inst_id,
        s.sid,
