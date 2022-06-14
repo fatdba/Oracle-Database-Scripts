@@ -1,3 +1,4 @@
+-- My test script
 configure backup optimization on;
 configure controlfile autobackup on;
 configure controlfile autobackup format for device type disk to '/archiva/backup/%F';
