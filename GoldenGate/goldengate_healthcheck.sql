@@ -1,3 +1,4 @@
+-- This is not my script but written by ORACLE SUPPORT 
 REM
 REM This healthcheck script is for use on Oracle 12c (12.1.0.2) databases only. 
 REM 
