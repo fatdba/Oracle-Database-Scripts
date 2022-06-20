@@ -3,7 +3,7 @@
 -- ------------------------------------------------------------------------
 -- AUTHOR:
 -- Michael Polaski - Oracle Support Services
--- Copyright 2002, Oracle Corporation
+-- Copyright 2002, Oracle Corporation   -
 -- ------------------------------------------------------------------------
 -- PURPOSE:
 -- This script is intended to provide a user friendly guide to troubleshoot
