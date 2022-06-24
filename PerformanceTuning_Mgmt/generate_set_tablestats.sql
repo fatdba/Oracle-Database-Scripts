@@ -1,5 +1,5 @@
 set verify off
-set heading off echo off feed off pages 0 linesize 500
+set heading off echo off feed off pages 0 linesize 505
 accept tab_owner        prompt 'Enter Table Owner: '
 accept tab_name         prompt 'Enter Table Name : '
 spool run-set-table-stats.sql
