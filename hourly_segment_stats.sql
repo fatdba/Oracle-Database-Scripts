@@ -1,6 +1,8 @@
 --
 -- Hourly segment statistics for the last 4 hours from AWR
 --
+--
+-- Author : Prashant Dixit
 @big_job
 @plusenv
 
