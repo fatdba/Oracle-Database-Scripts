@@ -1,4 +1,4 @@
--- librarycache_locks.sql
+-- librarycache_locks.sql is the script name
 -- Not written by me but through MetaLink article 169139.1
 --
 -- session a: exec dbms_lock.sleep(600)
