@@ -1,4 +1,4 @@
--- Check the status of incremental pref
+-- Check the status of incremental prefe
 
 select dbms_stats.get_prefs('INCREMENTAL', tabname=>'EMPLOYEE',ownname=>'SCOTT') from dual;
 
