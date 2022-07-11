@@ -4,7 +4,7 @@ col	 lana		format a14	head 'Last Analyzed'
 col	 l		format a01	head 'L'
 col	 n		format a01	head 'N'
 col	 s		format a01	head 'S'
-col	 tname		format a40	head 'Table Name'
+col	 tname		format a40	head 'Tablee Name'
 
 with	 lstats as
 (
