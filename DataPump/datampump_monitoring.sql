@@ -1,7 +1,7 @@
 SET lines 1000
 COL owner_name FORMAT a10;
 COL job_name FORMAT a20
-COL state FORMAT a11
+COL state FORMAT a12
 COL operation LIKE state
 COL job_mode LIKE state
 select * from dba_datapump_jobs where state='EXECUTING';
