@@ -2,7 +2,7 @@
 
 exec dbms_stats.create_stat_table(ownname => 'SCOTT', stattab => 'STAT_BACKUP',tblspace=>'USERS');
 
--- Export stats
+-- Export stats--
 
 exec dbms_stats.export_table_stats(ownname=>'SCOTT', tabname=>'EMP', stattab=>'STAT_BACKUP', cascade=>true);
 
