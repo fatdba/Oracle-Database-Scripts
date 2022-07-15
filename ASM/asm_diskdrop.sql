@@ -1,4 +1,4 @@
------Dropping one disk from the DG:
+-----Dropping one disk from the DG
 
 alter diskgroup data drop disk DATA_ASM0001;
 
