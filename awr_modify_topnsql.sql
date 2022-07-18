@@ -1,4 +1,4 @@
--- Change the number of SQL’s captured -TOPNSQL
+-- Change the number of SQL’s captured TOPNSQL
 -- To change the settings to capture all the SQL’s in the cache
 execute  dbms_workload_repository.modify_snapshot_settings (topnsql => 'MAXIMUM');
 
