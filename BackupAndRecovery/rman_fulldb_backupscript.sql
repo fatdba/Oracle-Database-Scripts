@@ -10,7 +10,7 @@ allocate channel c1 type disk format '/archiva/backup/%I-%Y%M%D-%U' maxpiecesize
 allocate channel c2 type disk format '/archiva/backup/%I-%Y%M%D-%U' maxpiecesize 3G;
 allocate channel c3 type disk format '/archiva/backup/%I-%Y%M%D-%U' maxpiecesize 3G;
 allocate channel c4 type disk format '/archiva/backup/%I-%Y%M%D-%U' maxpiecesize 3G;
-backup as compressed backupset incremental level 0 check logical database plus archivelog;
+backup as compressed backupset incremental level 0 check logical database plus archivelog ;
 release channel c1 ;
 release channel c2 ;
 release channel c3 ;
