@@ -2,6 +2,8 @@
 -- NAME: CELLPERFDIAG.SQL
 -- ------------------------------------------------------------------------
 -- ------------------------------------------------------------------------
+-- ------------------------------------------------------------------------
+-- ------------------------------------------------------------------------
 -- PURPOSE:
 -- This script is intended to provide a user friendly guide to troubleshoot
 -- cell performance specifically to identify which cell(s) may be problematic.
