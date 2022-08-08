@@ -10,4 +10,4 @@ SELECT upper(instance_name) instance_name FROM v$instance;
 SET SQLPROMPT "&&xInstance.> " 
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD:HH24:MI';
 select sysdate, startup_time from v$instance;
---set echo on
+-- set echo on
