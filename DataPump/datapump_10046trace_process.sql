@@ -1,5 +1,6 @@
 -- DATAPUMP_10046_TRACING_START.SQL: (START)
 -- Modify as per your need
+-- Test script
 SET ECHO OFF
 SET FEEDBACK OFF
 --
