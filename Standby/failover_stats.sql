@@ -1,5 +1,5 @@
 
-set lines 140
+set linesize 140
 col fo_time	format a20
 col fo_pdt	format a20
 col fo_reason	format a80
