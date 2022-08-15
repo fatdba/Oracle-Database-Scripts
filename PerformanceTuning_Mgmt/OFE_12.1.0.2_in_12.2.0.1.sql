@@ -1,4 +1,5 @@
 -- Oracle provided script
+-- Test
 REM DESCRIPTION
 REM   This script is used to set the CBO parameters and fix control
 REM   settings to downgrade the optimizer features to 12.1.0.2
