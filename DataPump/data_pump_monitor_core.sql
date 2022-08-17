@@ -1,4 +1,4 @@
--- Querying DBA_DATAPUMP_JOBS view:-
+-- Querying DBA_DATAPUMP_JOBS view
 select * from dba_datapump_jobs;
 
 -- The STATE column of the above view would give you the status of the JOB to show whether EXPDP or IMPDP jobs are still running, 
