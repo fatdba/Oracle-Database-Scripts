@@ -1,7 +1,7 @@
 undef sid
 undef last_x_min
 
-set lines 200 echo off
+set lines 201 echo off
 col sess	format a10
 col stime	format a08
 col sta  	format a04	head 'Sta'
