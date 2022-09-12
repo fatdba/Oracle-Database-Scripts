@@ -34,6 +34,6 @@ SELECT SESSION_KEY "Backup Session ID", INPUT_TYPE,
        TO_CHAR(START_TIME,'DY mm/dd hh24:mi') Start_Time,
        TO_CHAR(END_TIME,'DY mm/dd hh24:mi')   Start_Time,
        ELAPSED_SECONDS/3600                   Hrs
-FROM GV$RMAN_BACKUP_JOB_DETAILS
+FROM V$RMAN_BACKUP_JOB_DETAILS
 ORDER BY SESSION_KEY desc;
 
