@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
 -- File name:   prashantpoormanscript.sql
 -- Version:     V1.1 (12-08-2021) Simple View
 -- Purpose:     This script can be used on any Oracle DB to know what all running and for how long and waiting
