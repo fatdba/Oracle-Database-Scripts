@@ -1,6 +1,7 @@
 -- Oracle provided script 
 --
 --
+--
 SPO pxhcdr.log
 SET DEF ^ TERM OFF ECHO ON VER OFF SERVEROUT ON SIZE 1000000;
 REM
