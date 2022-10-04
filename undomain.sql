@@ -1,5 +1,6 @@
 SET SERVEROUTPUT ON
 -- Not wrriten by me but its a good script to check details on UNDO tablespace usage and recommendations
+--
 SET LINES 600
 ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY HH24:MI:SS';
 
