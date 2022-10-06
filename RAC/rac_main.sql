@@ -1,6 +1,5 @@
 -- enable and disable autorestart of CRS
-
- Run as root user
+Run as root user
 
 $GRID_HOME/bin/crsctl enable crs
 CRS-4622: Oracle High Availability Services autostart is enabled.
