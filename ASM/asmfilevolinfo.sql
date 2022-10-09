@@ -1,4 +1,4 @@
--- Not written by me but is a good script 
+-- Not written by me but is a good script for ASM monitoring
 --
 --
 SET ECHO        OFF
