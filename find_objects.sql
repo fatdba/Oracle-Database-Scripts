@@ -3,6 +3,9 @@
 -- List objects matching specified name pattern (except PARTITIONS)
 -- Objects which were affected in the last 2 hours will be flagged
 --
+--
+--
+--
 
 @plusenv
 undef object_string
