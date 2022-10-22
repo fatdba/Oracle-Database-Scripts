@@ -1,3 +1,5 @@
+-- Author: Prashant 'TheFatDBA' Dixit
+--
 WITH
 ref_int_constraints AS (
 SELECT 
