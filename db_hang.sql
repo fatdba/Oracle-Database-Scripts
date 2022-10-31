@@ -1,3 +1,6 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
 
 
 -- Create system state dump, hanganalyze and ashdumps 
