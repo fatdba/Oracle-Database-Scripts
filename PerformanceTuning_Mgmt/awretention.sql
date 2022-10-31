@@ -1,3 +1,6 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
 col dbid format 999999999999
 col interval_minutes format 99999 head 'INTERVAL|MINUTES'
 col retention_days format 999999 head 'RETENTION|DAYS'
