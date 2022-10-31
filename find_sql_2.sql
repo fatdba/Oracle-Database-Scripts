@@ -1,3 +1,6 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
 accept sql_text -
 prompt 'Enter sql_text :'
 set pagesi 1000
