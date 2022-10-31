@@ -1,3 +1,6 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
 -- View current AWR retention period
 
 select retention from dba_hist_wr_control;
