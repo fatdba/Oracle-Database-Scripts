@@ -1,3 +1,6 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
 set pagesize 40
 select x$kglpn.inst_id,sid Holder ,KGLPNUSE Sesion , KGLPNMOD Held, KGLPNREQ Req
 from x$kglpn , gv$session
