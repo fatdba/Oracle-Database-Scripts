@@ -1,3 +1,6 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
 set linesi 190
 set pagesi 0
 col event format a30 trunc
