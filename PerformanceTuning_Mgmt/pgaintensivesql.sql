@@ -1,3 +1,5 @@
+--Author: Prashant FatDBA Dixit
+--
 SELECT 
        h.sql_id,
        ROUND(MAX(h.pga_allocated)/POWER(2,30),1) max_pga_gb,
