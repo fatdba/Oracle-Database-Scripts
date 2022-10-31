@@ -1,3 +1,7 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
+
 col objid	format 99999999 head 'Object Id'
 col obj		format a70	head 'Owner.Object : SubObject'
 col objid	format 9999999
