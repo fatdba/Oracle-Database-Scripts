@@ -11,6 +11,8 @@ END;
 /
 
 -- For a single table partition
+--
+--
 
 BEGIN
 DBMS_STATS.GATHER_TABLE_STATS (
