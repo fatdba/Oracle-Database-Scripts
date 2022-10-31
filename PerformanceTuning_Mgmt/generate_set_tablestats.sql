@@ -1,3 +1,6 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
 set verify off
 set heading off echo off feed off pages 0 linesize 505
 accept tab_owner        prompt 'Enter Table Owner: '
