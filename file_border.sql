@@ -1,3 +1,7 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
+
 clear breaks
 set linesi 190
 col segment_name format a30
