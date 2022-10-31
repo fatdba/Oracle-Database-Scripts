@@ -1,3 +1,7 @@
+--
+-- Author: Prashant 'The FatDBA' Dixit
+--
+
 Vi Schema.sql (create sqlfile and execute)
 
 set long 20000 longchunksize 20000 pagesize 0 linesize 1000 feedback off verify off trimspool on
