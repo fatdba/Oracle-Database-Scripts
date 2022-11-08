@@ -1,3 +1,6 @@
+--
+-- A short one to check value of a particular hidden param
+--
 col ParameterName for a30
 col sessval for a30
 col instval for a30
