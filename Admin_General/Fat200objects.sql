@@ -22,6 +22,12 @@ PROMPT----- Version: V1.1 (Date: 04-02-2007)
 PROMPT-----
 PROMPT-----
 PROMPT-----
+PROMPT-----
+PROMPT-----
+PROMPT-----
+PROMPT-----
+PROMPT-----
+PROMPT-----
 
 WITH schema_object AS (
 SELECT  
