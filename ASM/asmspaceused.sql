@@ -1,5 +1,5 @@
--- Not written by me but is a good script 
 --
+-- Not written by me but is a good script 
 --
 --
 SET LINESIZE  145
