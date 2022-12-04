@@ -1,3 +1,5 @@
+-- Test script by me
+-- version 1.0 
 CREATE TABLE scale_write_0 AS
   WITH generator AS (
                      SELECT --+ materialize
