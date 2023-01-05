@@ -4,6 +4,7 @@
 -- Purpose:     This script can be used on any Oracle DB to know what all running and for how long and waiting
 --              Also provides details on SQL and SESSION level. 
 -- Author:      Prashant Dixit The Fatdba www.fatdba.com
+--
 --------------------------------------------------------------------------------------------------------------------
 set linesize 400 pagesize 400
 select
