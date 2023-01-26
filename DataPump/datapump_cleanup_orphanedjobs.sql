@@ -1,4 +1,8 @@
--- Find the orphaned Data Pump jobs:
+--
+-- Find the orphaned Data Pump jobs :
+-- 
+--
+
 
 SELECT owner_name, job_name, rtrim(operation) "OPERATION",
 rtrim(job_mode) "JOB_MODE", state, attached_sessions
