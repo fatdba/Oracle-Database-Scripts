@@ -1,3 +1,5 @@
+--
+--
 Start RMAN from the OS command line.
 
 rman
