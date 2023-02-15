@@ -22,12 +22,15 @@ PROMPT-----
 
 set lines 220
 set pages 1000
-col cf for 9,999
-col df for 9,999
+col END_TIME for a20
+col START_TIME for a20
+col DOW for a10
+col cf for 2
+col df for 2
 col elapsed_seconds heading "ELAPSED|SECONDS"
-col i0 for 9,999
-col i1 for 9,999
-col l for 9,999
+col i0 for 2
+col i1 for 2
+col l for 2
 col output_mbytes for 9,999,999 heading "OUTPUT|MBYTES"
 col session_recid for 999999 heading "SESSION|RECID"
 col session_stamp for 99999999999 heading "SESSION|STAMP"
