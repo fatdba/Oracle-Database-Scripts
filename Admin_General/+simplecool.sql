@@ -1,4 +1,5 @@
 -- Plan from the Shared Pool
+--
 select * from table(dbms_xplan.display_cursor('SQL_ID',null,'ALL'));
 
 -- Plan from the AWR
