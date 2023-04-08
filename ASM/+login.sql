@@ -2,6 +2,7 @@
 #select upper(instance_name) from v$instance;
 #set SQLP &dbname>
 #clear col
+--
 --COLUMN user_name NEW_VALUE xUser NOPRINT
 COLUMN instance_name NEW_VALUE xInstance NOPRINT
 --SELECT user user_name, upper(instance_name) instance_name FROM v$instance;
