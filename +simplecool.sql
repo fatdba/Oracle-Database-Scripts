@@ -5,6 +5,9 @@ select * from table(dbms_xplan.display_cursor('SQL_ID',null,'ALL'));
 select * from table(dbms_xplan.display_awr('SQL_ID',null,null,'ALL'));
 select * from table(dbms_xplan.display_awr('SQL_ID',null,DBID,'ALL'));
 
+-- To get plan for a particular PHV
+SELECT * FROM table(DBMS_XPLAN.DISPLAY_AWR('SQLID',PHV));
+
 
 -- kill all sessions executing a bad SQL
 select 
