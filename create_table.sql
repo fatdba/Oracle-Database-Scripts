@@ -2,6 +2,7 @@ DECLARE
 tbl_count number;
 sql_stmt long;
 
+
 BEGIN
     SELECT COUNT(*) INTO tbl_count 
     FROM dba_tables
