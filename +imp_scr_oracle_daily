@@ -1,0 +1,1042 @@
+Command Infinite loop
+==========================
+[oracle@osekilx303p trace]$  while true; do tnsping prdwfmso|grep msec; sleep 2
+> done
+OK (0 msec)
+OK (0 msec)
+OK (0 msec)
+OK (0 msec)
+
+to dial conference from cellphone
+======================================
+18002006998 > 436781 > 85170078#
+
+
+TO CREATE A GIANT SIZED FILE
+======================================
+[oracle@osekilx126 /vol5/oracle/one_tm_arc]# dd if=/dev/zero of=TESTFILE.DIXIT bs=1024 count=45G
+
+[1]+  Stopped                 dd if=/dev/zero of=TESTFILE.DIXIT bs=1024 count=45G
+
+[oracle@osekilx126 /vol5/oracle/one_tm_arc]# bg
+[1]+ dd if=/dev/zero of=TESTFILE.DIXIT bs=1024 count=45G &
+
+
+
+top options
+==========================================
+1. Press (Shift+O) to Sort field via field letter, for example press ‘a‘ letter to sort process with PID (Process ID).
+2. Press ‘z‘ option in running top command will display running process in color which may help you to identified running process easily.
+3. Press ‘c‘ option in running top command, it will display absolute path of running process.
+4. By default screen refresh interval is 3.0 seconds, same can be change pressing ‘d‘ option in running top command and change it as desired as shown below.
+5. You can kill a process after finding PID of process by pressing ‘k‘ option in running top command without exiting from top window as shown below.
+6. Press (Shift+P) to sort processes as per CPU utilization. See screenshot below.
+7. You can use ‘r‘ option to change the priority of the process also called Renice.
+8. Press (Shift+W) to save the running top command results under /root/.toprc.
+
+
+
+
+To SCP all directories to a remote location
+=============================================
+scp -rp *
+
+SYSTEM BOOT
+=============
+who -b
+
+
+mongo db access:
+======================
+150.236.15.146 (oracle/oracle)
+
+/opt/dixit/mongodb/
+
+
+MARIA DB ACCESS:
+======================
+
+
+METALINK DETAILS:
+==================================================
+Support Identifier	10399934
+Account Name	Telefonaktiebolaget L M Ericsson
+Customer support Line: 	
+Phone: +1.800.223.1711 option 1 and then option 2 
+
+
+
+12oem UAT URL:
+=====================
+www-proxy.ericsson.se
+8080
+https://153.88.80.194:7802/em
+sysman
+kistaOem99
+go to Citrix Mozilla--> tools --> options --> advanced --> network --> 
+use Manual proxy configuration
+and enter there  
+www-proxy.ericsson.se
+port 8080
+
+bmcpatrol agent
+userid: nmcsa011
+paas: h4NTt47Y
+
+Package to fix internet issues - connectivity
+===============================================
+download 'resolvconfig' from synaptics (su owned)
+then close your VM, shut RVI and reboot your machine.
+
+
+Backup Status: (RMAN)
+----------------------
+
+REM RMAN Progress
+alter session set nls_date_format='dd/mm/yy hh24:mi:ss'
+/
+select SID, START_TIME,TOTALWORK, sofar, (sofar/totalwork) * 100 done,
+sysdate + TIME_REMAINING/3600/24 end_at
+from v$session_longops
+where totalwork > sofar
+AND opname NOT LIKE '%aggregate%'
+AND opname like 'RMAN%'
+/
+
+calculate total records in any table monthwise - converting EPOCH to TIMESTAMP.
+====================================================================================
+select count(*) from hpd_help_desk where to_date('01/01/1970','MM/DD/YYYY')+last_resolved_date/86400 between to_date('05/01/2014','MM/DD/YYYY') and to_date('05/31/2014 23:59:59','MM/DD/YYYY hh24:mi:ss');
+
+
+
+select trunc(to_date('01/01/1970','MM/DD/YYYY')+last_resolved_date/86400 ) dt,count(*) from hpd_help_desk where to_date('01/01/1970','MM/DD/YYYY')+last_resolved_date/86400 between to_date('05/01/2014','MM/DD/YYYY') and to_date('05/31/2014 23:59:59','MM/DD/YYYY hh24:mi:ss')
+group by trunc(to_date('01/01/1970','MM/DD/YYYY')+last_resolved_date/86400 )  order by 1;
+
+
+RMAN Second Script:Good
+==========================
+set lines 120
+col RMAN_Status FORMAT A20 heading "Status"
+col INPUT_TYPE  FORMAT A15 heading "Backup Type"
+col Hrs         FORMAT 999.99 heading "Backup Time"
+col Start_Time  FORMAT A20 heading "Backup Start Time"
+col Start_Time  FORMAT A20 heading "Backup End Time"
+
+SELECT SESSION_KEY "Backup Session ID", INPUT_TYPE, 
+       STATUS 				      RMAN_Status,
+       TO_CHAR(START_TIME,'DY mm/dd hh24:mi') Start_Time,
+       TO_CHAR(END_TIME,'DY mm/dd hh24:mi')   Start_Time,
+       ELAPSED_SECONDS/3600                   Hrs
+FROM V$RMAN_BACKUP_JOB_DETAILS
+ORDER BY SESSION_KEY desc;
+
+
+
+
+
+
+Backup More Details:
+========================
+set lines 220
+set pages 1000
+col cf for 9,999
+col df for 9,999
+col elapsed_seconds heading "ELAPSED|SECONDS"
+col i0 for 9,999
+col i1 for 9,999
+col l for 9,999
+col output_mbytes for 9,999,999 heading "OUTPUT|MBYTES"
+col session_recid for 999999 heading "SESSION|RECID"
+col session_stamp for 99999999999 heading "SESSION|STAMP"
+col status for a10 trunc
+col time_taken_display for a10 heading "TIME|TAKEN"
+col output_instance for 9999 heading "OUT|INST"
+select
+  j.session_recid, j.session_stamp,
+  to_char(j.start_time, 'yyyy-mm-dd hh24:mi:ss') start_time,
+  to_char(j.end_time, 'yyyy-mm-dd hh24:mi:ss') end_time,
+  (j.output_bytes/1024/1024) output_mbytes, j.status, j.input_type,
+  decode(to_char(j.start_time, 'd'), 1, 'Sunday', 2, 'Monday',
+                                     3, 'Tuesday', 4, 'Wednesday',
+                                     5, 'Thursday', 6, 'Friday',
+                                     7, 'Saturday') dow,
+  j.elapsed_seconds, j.time_taken_display,
+  x.cf, x.df, x.i0, x.i1, x.l,
+  ro.inst_id output_instance
+from V$RMAN_BACKUP_JOB_DETAILS j
+  left outer join (select
+                     d.session_recid, d.session_stamp,
+                     sum(case when d.controlfile_included = 'YES' then d.pieces else 0 end) CF,
+                     sum(case when d.controlfile_included = 'NO'
+                               and d.backup_type||d.incremental_level = 'D' then d.pieces else 0 end) DF,
+                     sum(case when d.backup_type||d.incremental_level = 'D0' then d.pieces else 0 end) I0,
+                     sum(case when d.backup_type||d.incremental_level = 'I1' then d.pieces else 0 end) I1,
+                     sum(case when d.backup_type = 'L' then d.pieces else 0 end) L
+                   from
+                     V$BACKUP_SET_DETAILS d
+                     join V$BACKUP_SET s on s.set_stamp = d.set_stamp and s.set_count = d.set_count
+                   where s.input_file_scan_only = 'NO'
+                   group by d.session_recid, d.session_stamp) x
+    on x.session_recid = j.session_recid and x.session_stamp = j.session_stamp
+  left outer join (select o.session_recid, o.session_stamp, min(inst_id) inst_id
+                   from GV$RMAN_OUTPUT o
+                   group by o.session_recid, o.session_stamp)
+    ro on ro.session_recid = j.session_recid and ro.session_stamp = j.session_stamp
+where j.start_time > trunc(sysdate)-&NUMBER_OF_DAYS
+order by j.start_time;
+
+
+
+
+LONG RUNNING QUERIES:
+============================
+col sid format 9999999
+col serial# for 9999999
+
+column opname format a14
+column message format a41
+set lines 1000
+set pages 100
+
+select sid,serial#,sql_id,opname,message,sofar,totalwork,round((sofar/decode(totalwork,0,1,totalwork))*100,2) work_done,
+time_remaining Time_remain,ELAPSED_SECONDS ela_seconds
+from v$session_longops where sofar<>totalwork
+/
+
+
+
+
+unix: files deleted
+==========================
+/usr/sbin/lsof |grep -i deleted
+
+
+
+
+
+SPID/PID
+===============
+col sid format 999999
+col username format a20
+col osuser format a15
+select b.spid,a.sid, a.serial#,a.username, a.osuser
+from v$session a, v$process b
+where a.paddr= b.addr
+and b.spid='&spid'
+order by b.spid;
+
+
+SQL> select sql_address from v$session where sid=197;
+00000008437E7B30
+
+
+SQL> select sql_text from v$sqltext where ADDRESS='00000008437E7B30' order by PIECE;
+
+UPDATE T119 SET C1304110200=:"SYS_B_0",C5=:"SYS_B_1",C6=:"SYS_B_
+2" WHERE C1 = :"SYS_B_3"
+
+
+
+
+
+
+Checking Timing Details of SID and event waiting for
+===========================================================
+select a.sid, a.serial#, a.status, a.program, b.event,to_char(a.logon_time, 'dd-mon-yy hh24:mi')
+LOGON_TIME,
+to_char(Sysdate, 'dd-mon-yy--hh24:mi') CURRENT_TIME, (a.last_call_et/3600) "Hrs connected" from
+v$session a,
+v$session_wait b where a.sid=&sid and a.sid=b.sid;
+
+
+
+To list inactive Sessions respective username
+=================================================
+
+SELECT username,count(*) num_inv_sess
+FROM v$session
+where last_call_et > 3600
+and username is not null
+AND STATUS='INACTIVE'
+group by username
+order by num_inv_sess DESC;
+
+
+
+
+
+Checking  Timing details, Client PID of associated oracle SID
+===============================================================
+
+set head off
+set verify off
+set echo off
+set pages 1500
+set linesize 100
+set lines 120
+prompt
+prompt Details of SID / SPID / Client PID
+prompt ==================================
+select /*+ CHOOSE*/
+'Session  Id.............................................: '||s.sid,
+'Serial Num..............................................: '||s.serial#,
+'User Name ..............................................: '||s.username,
+'Session Status .........................................: '||s.status,
+'Client Process Id on Client Machine ....................: '||'*'||s.process||'*'  Client,
+'Server Process ID ......................................: '||p.spid Server,
+'Sql_Address ............................................: '||s.sql_address,
+'Sql_hash_value .........................................: '||s.sql_hash_value,
+'Schema Name ..... ......................................: '||s.SCHEMANAME,
+'Program  ...............................................: '||s.program,
+'Module .................................................: '|| s.module,
+'Action .................................................: '||s.action,
+'Terminal ...............................................: '||s.terminal,
+'Client Machine .........................................: '||s.machine,
+'LAST_CALL_ET ...........................................: '||s.last_call_et,
+'S.LAST_CALL_ET/3600 ....................................: '||s.last_call_et/3600
+from v$session s, v$process p
+where p.addr=s.paddr and
+s.sid=nvl('&sid',s.sid) and
+p.spid=nvl('&spid',p.spid) and
+nvl(s.process,-1) = nvl('&ClientPid',nvl(s.process,-1));
+
+
+
+Number of INACTIVE sessions WITH idle times
+================================================
+set linesize 400 pagesize 400
+
+SELECT
+s.sid,s.serial#,s.username
+,s.status
+,substr(s.machine,1,10)
+,s.osuser,s.module
+,to_char(logon_time, 'mm/dd/yy hh24:mi:ss') logon_time
+,substr('0'||trunc(last_call_et/86400),-2,2) || ':' ||
+substr('0'||trunc(mod(last_call_et,86400)/3600),-2,2) || ':' ||
+substr('0'||trunc(mod(mod(last_call_et,86400),3600)/60),-2,2) || ':' ||
+substr('0'||mod(mod(mod(last_call_et,86400),3600),60),-2,2) idle_time
+FROM v$session s, v$process p
+WHERE s.username IS NOT NULL and STATUS='INACTIVE'
+AND p.addr(+) = s.paddr
+ORDER BY
+idle_time desc;
+
+
+
+
+Number of INACTIVE sessions
+-----------------------------
+SELECT
+s.sid,s.serial#,s.username
+,s.status
+,substr(s.machine,1,10)
+,s.osuser,s.module
+,to_char(logon_time, 'mm/dd/yy hh24:mi:ss') logon_time
+,substr('0'||trunc(last_call_et/86400),-2,2) || ':' ||
+substr('0'||trunc(mod(last_call_et,86400)/3600),-2,2) || ':' ||
+substr('0'||trunc(mod(mod(last_call_et,86400),3600)/60),-2,2) || ':' ||
+substr('0'||mod(mod(mod(last_call_et,86400),3600),60),-2,2) idle_time
+FROM v$session s, v$process p
+WHERE s.username IS NOT NULL and STATUS='INACTIVE'
+AND p.addr(+) = s.paddr
+ORDER BY
+idle_time desc;
+
+
+
+
+
+SAR HISTORICAL DATA
+===========================
+
+sar -b
+
+07:00:01 AM    942.05     72.59    869.47   1369.56  12147.02
+07:10:01 AM   1059.60    111.11    948.50   2055.72  12719.11
+07:20:01 AM   1792.78    217.90   1574.88   3861.59  21572.07
+07:30:01 AM   2202.18    278.00   1924.18   4961.88  26370.54
+07:40:01 AM   2308.67    272.67   2036.00   5023.61  28066.04
+07:50:01 AM   2227.86    257.64   1970.22   4689.13  27017.16
+08:00:01 AM    819.43     77.60    741.83   1447.71  10143.83
+
+
+sar -q -f /var/log/sa/sa02 -s 07:00:01 
+
+
+01:30:01 PM   runq-sz  plist-sz   ldavg-1   ldavg-5  ldavg-15
+10:10:01 AM        10      1591      5.30      5.69      5.60
+10:20:01 AM         5      1588     14.50     10.53      7.56
+10:30:01 AM         4      1588     13.32     12.65     10.29
+10:40:01 AM         6      1591      4.71      8.32      9.74
+06:40:01 PM         6      1574     13.85     12.80      9.09
+06:50:01 PM         7      1566     14.28     14.45     11.78
+07:00:01 PM         7      1575      4.91      7.06      9.36
+07:10:01 PM         5      1566      4.19      4.62      6.88
+
+
+runq-sz = number of processes;
+ldavg-1 =one minute load average
+
+
+For CPU 
+sar –u var/log/sa/sa02 -s 07:00:01 
+
+
+-bash-3.2$ sar -r -f /var/log/sa/sa25
+Linux 2.6.18-308.el5 (osekilx101)       05/25/2014
+
+12:00:01 AM kbmemfree kbmemused  %memused kbbuffers  kbcached kbswpfree kbswpused  %swpused  kbswpcad
+12:10:01 AM    284408 263962116     99.89    964520 226254116   5814084   1350864     18.85     32352
+12:20:01 AM    224836 264021688     99.91    970908 226306100   5814184   1350764     18.85     32376
+12:30:02 AM    239604 264006920     99.91    977836 226291588   5814332   1350616     18.85     32416
+
+
+
+
+TOTAL NUMBER OF PROCESSES IN SERVER
+========================================
+cat /proc/cpuinfo | grep processor | wc -l
+
+
+TO CHECK IS RUNNING ON VMWARE
+========================================
+
+lspci | grep VMware
+
+It should show something like this:
+
+    00:0f.0 VGA compatible controller: VMware SVGA II Adapter
+    00:11.0 PCI bridge: VMware PCI bridge (rev 02)
+    00:15.0 PCI bridge: VMware PCI Express Root Port (rev 01)
+
+
+
+Table Fragmentations Detections
+============================================
+select table_name,OWNER,round((blocks*8),2) "size (kb)" , 
+                            round((num_rows*avg_row_len/1024),2) "actual_data (kb)",
+                            (round((blocks*8),2) - round((num_rows*avg_row_len/1024),2)) "wasted_space (kb)"
+from dba_tables
+where (round((blocks*8),2) > round((num_rows*avg_row_len/1024),2)) and OWNER not In ('SYS','SYSTEM')
+order by 4 desc;
+
+
+
+
+CPU Utilisation
+===================
+after sar,mpstat, top 
+
+vmstat - si so
+sar 1 100
+
+to identify who is using high cpu
+
+ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10
+
+
+
+
+Total number of inactive sessions grouped by owners
+========================================================
+select
+   s.status,
+   count(1),
+   s.username
+from
+   v$process p,
+   v$session s
+where
+   paddr(+)=addr
+group by
+   s.status,
+   s.username
+order by 1;
+
+
+Reading Alert log using SQL Terminal
+=========================================
+select message_text from X$DBGALERTEXT where rownum <= 20;
+
+ADRCI
+==========
+SHOW ALERT -P "MESSAGE_TEXT LIKE '%ORA-600%'"
+SHOW ALERT -TAIL 50 
+SHOW TRACEFILE %mmon%
+
+adrci> ips pack incident 5137 in c:\tmp
+Generated package 5 in file C:\tmp\ORA600qmx_20071116175948_COM_1.zip, mode complete
+adrci>
+
+adrci> set homepath diag/rdbms/onetm/onetm
+adrci> ips pack problemkey "ORA 600 [25027]"
+Generated package 1 in file /home/oracle/ORA600250_20140517095959_COM_1.zip, mode complete
+
+
+
+Session Details:
+===================
+select USERNAME, STATUS, PROCESS, machine, terminal,program,sql_id, module, LOGON_TIME, EVENT, WAIT_CLASS, WAIT_TIME, STATE FROM V$SESSION WHERE SID='&SID';
+
+
+Printing Messages to alert log file;
+=====================================
+SQL> exec dbms_system.ksdwrt(1, 'This message goes to trace file in the udump location');
+PL/SQL procedure successfully completed.
+ 
+SQL> exec dbms_system.ksdwrt(2, 'This message goes to the alert log');
+PL/SQL procedure successfully completed.
+ 
+SQL> exec dbms_system.ksdwrt(3, 'This message goes to the alert log and trace file in the udump location');
+PL/SQL procedure successfully completed.
+
+SQL> exec dbms_system.ksdwrt(2, 'ORA-600: Testing Metrics - test error - OEM - DIXIT');
+PL/SQL procedure successfully completed.
+ 
+
+
+SESSION DETAILS sid, username, module, sql etc by providing the value of Operating System process ID.
+----------------------------
+set head on
+set lin 700
+col module format a20
+
+SELECT s.sid, p.spid "OS Pid", s.module, s.process, s.schemaname "Schema", s.username "Username",
+s.osuser "OS User", s.program "Program", a.sql_id, substr(a.sql_text,1,550) "SQL Text"
+FROM v$session s, v$sqlarea a, v$process p
+WHERE s.sql_hash_value = a.hash_value (+)
+AND s.sql_address = a.address (+)
+AND s.paddr = p.addr
+and s.sid = (select s.sid from v$session s, v$process p where s.paddr = p.addr and p.spid = &p);
+
+
+
+STRUCTURE OF OBJECTS/DEFINITION:
+----------------------------------------------------------------------------------
+select dbms_metadata.get_ddl('INDEX','I2785_536870927_1','ARADMIN') from dual;
+
+
+
+SQL TEXT MATCHING AND SQL DETAILS
+========================================
+select sql_id,RUNTIME_MEM/1024/1024,fetches,PARSE_CALLS,PHYSICAL_READ_REQUESTS,PHYSICAL_READ_BYTES,ROWS_PROCESSED,OPTIMIZER_MODE from v$sqlarea where sql_text like 'select /*NORULE */:"SYS_B_0" bpb%';
+
+
+
+
+Current User Logged in System with SQL, LOGGED ON COMPUTER, AND SQL TEXT THEY ARE RUNNING
+===============================================================================================
+
+SELECT 
+SUBSTR(SS.USERNAME,1,8) USERNAME,
+SS.OSUSER "USER",
+AR.MODULE || ' @ ' || SS.machine CLIENT,
+SS.PROCESS PID,
+TO_CHAR(AR.LAST_LOAD_TIME, 'DD-Mon HH24:MM:SS') LOAD_TIME,
+AR.DISK_READS DISK_READS,
+AR.BUFFER_GETS BUFFER_GETS,
+SUBSTR(SS.LOCKWAIT,1,10) LOCKWAIT,
+W.EVENT EVENT,
+SS.status,
+AR.SQL_fullTEXT SQL
+FROM V$SESSION_WAIT W,
+V$SQLAREA AR,
+V$SESSION SS, 
+v$timer T
+WHERE SS.SQL_ADDRESS = AR.ADDRESS
+AND SS.SQL_HASH_VALUE = AR.HASH_VALUE
+AND SS.SID = w.SID (+)
+AND ss.STATUS = 'ACTIVE'
+AND W.EVENT != 'client message'
+ORDER BY  SS.LOCKWAIT;
+
+
+
+Zip all files in a directory:
+------------------------------------------
+zip -r -9 filename.zip /directory. 
+
+
+redirect output of multiple files in to one single file
+----------------------------------------------------------
+(for r in *;do sed s/\$/\ $r/ < "$r";done) > bigfile
+
+
+
+DB Details:
+===============
+
+SET LINESIZE 400 PAGESIZE 400
+COL OPEN_MODE FOR A10
+COL FLASHBACK_ON FOR A14
+COL version for a12
+set long 1000
+col SCN for a13
+COL STARTTIME FOR A18
+COL UNQ_NAME FOR A9
+select s.NAME,s.LOG_MODE,to_char(s.current_scn) as SCN,s.OPEN_MODE,s.DATABASE_ROLE,s.FLASHBACK_ON, s.DB_UNIQUE_NAME AS UNQ_NAME, d.VERSION,d.LOGINS,TO_CHAR(d.STARTUP_TIME, 'DD-MM-YY HH24:MI:SS') AS STARTTIME,d.INSTANCE_ROLE from v$database s, v$instance d 
+where s.name=UPPER(d.instance_name);
+
+
+
+BLOCKS, FILE WITH THEIR WAIT EVENTS
+=======================================
+SELECT p1 “file#”, p2 “block#”, p3 “class#”, event FROM v$session_wait order by event desc;
+     
+???FILE#??? ???BLOCK#??? ???CLASS#??? EVENT
+----------- ------------ ------------ ----------------------------------------------------------------
+        201      2881754           15 direct path write temp
+         25      1430617            1 direct path read
+
+
+
+
+ELAPSED TIME USING SQL_ID
+===============================
+SET LINESIZE 120
+SET PAGESIZE 1000
+COL executions FOR 999,999,999
+COL elapsed_time FOR 999,999,999,999
+COL avg_ms FOR 999999.99
+COL min_ms FOR 999999.99
+COL max_ms FOR 999999.99
+SELECT
+TO_CHAR(TRUNC(snapshot.begin_interval_time + 1/8,'HH24'),'DD-MON-YYYY HH24:MI:SS') || ' EDT' SNAP_BEGIN,
+sqlstat.instance_number,
+SUM(sqlstat.executions_delta) executions,
+MIN(sqlstat.elapsed_time_delta / sqlstat.executions_delta / 1000) min_ms,
+MAX(sqlstat.elapsed_time_delta / sqlstat.executions_delta / 1000) max_ms,
+SUM(sqlstat.elapsed_time_delta) / SUM(sqlstat.executions_delta) / 1000 avg_Ms
+FROM
+dba_hist_sqlstat sqlstat,
+dba_hist_snapshot snapshot
+WHERE
+sqlstat.dbid = snapshot.dbid
+AND sqlstat.instance_number = snapshot.instance_number
+AND sqlstat.snap_id = snapshot.snap_id
+AND sqlstat.sql_id = '&1'
+AND snapshot.begin_interval_time >= TO_DATE('27-JUL-2009 21:00:00','DD-MON-YYYY HH24:MI:SS')
+GROUP
+BY TO_CHAR(TRUNC(snapshot.begin_interval_time + 1/8,'HH24'),'DD-MON-YYYY HH24:MI:SS') || ' EDT',
+sqlstat.instance_number
+ORDER
+BY snap_begin
+/
+
+
+
+The following return all SQLPLUS sessions only: 
+====================================================
+SELECT P.SPID OS_PID, S.PROGRAM ,S.OSUSER , S.USERNAME, S.COMMAND, S.PROCESS , S.MACHINE, S.TERMINAL, S. PROGRAM FROM V$SESSION S, V$PROCESS P
+WHERE P.ADDR = S.PADDR
+and S.PROGRAM like '%sqlplus%'; 
+
+
+
+
+DB OR PROCESS HANG
+=========================
+
+1) SELECT P.SPID OS_PID, S.PROGRAM ,S.OSUSER , S.USERNAME, S.COMMAND, S.PROCESS , S.MACHINE, S.TERMINAL, S. PROGRAM FROM V$SESSION S, V$PROCESS P
+WHERE P.ADDR = S.PADDR
+and S.PROGRAM like '%sqlplus%';
+
+
+2) ERRORSTACK
+Attach the session to oradebug and gather error stack for the process
+
+SQL> oradebug setospid xxxx <<<<< returned from step (1)
+- SQL> oradebug unlimit
+- SQL> oradebug dump errorstack 3;
+> wait 3 seconds
+- oradebug dump errorstack 3;
+> wait 3 seconds
+- oradebug dump errorstack 3;
+- close the trace and upload trace generated
+SQL> oradebug close_trace
+SQL> oradebug tracefile_name
+
+3) PROCESS STATE
+Attach the session to oradebug and gather process state for the process
+
+b) run the following to gather 3 consecutive process states
+$ sqlplus "/as sysdba"
+oradebug setospid <OS PID>
+oradebug unlimit
+oradebug dump processstate 10
+Wait 60 seconds
+oradebug dump processstate 10
+Wait 60 seconds
+oradebug dump processstate 10
+
+4) Run 3 systemstate dumps by doing following and upload trace file created in user_dump_dest.
+% sqlplus /nolog
+SQL> connect / as sysdba
+SQL> oradebug setmypid
+SQL> oradebug unlimit
+SQL> oradebug dump systemstate 266
+SQL> oradebug dump systemstate 266
+SQL> oradebug dump systemstate 266
+SQL> exit
+
+
+
+
+
+Displays information on all database sessions.
+====================================================
+SET LINESIZE 500
+SET PAGESIZE 1000
+COL LOGON_TIME FOR A30
+col program for a35
+COLUMN username FORMAT A15
+COLUMN osuser FORMAT A15
+COLUMN spid FORMAT A10
+COLUMN service_name FORMAT A15
+COLUMN module FORMAT A35
+COLUMN machine FORMAT A15
+COLUMN logon_time FORMAT A20
+
+SELECT NVL(s.username, '(oracle)') AS username,
+       s.osuser,
+       s.sid,
+       s.serial#,
+       p.spid,
+       s.status,
+       s.service_name,
+       s.module,
+       s.machine,
+       s.program,
+       TO_CHAR(s.logon_Time,'DD-MON-YYYY HH24:MI:SS') AS logon_time
+FROM   v$session s,
+       v$process p
+WHERE  s.paddr = p.addr
+ORDER BY s.username, s.osuser;
+
+SET PAGESIZE 14
+
+
+
+
+SHOW BLOCKING SESSIONS
+=============================
+SELECT blocking_session
+, username
+, sid
+, serial#
+, wait_class
+, seconds_in_wait
+FROM v$session
+WHERE blocking_session IS NOT NULL
+ORDER BY blocking_session;
+
+
+
+
+
+This single script provides the overall picture of the database in terms of Waits events, Active/Inactive killed sessions, Top Processes (physical I/O, logical I/O, memory and CPU processes), Top CPU usage by users, etc.
+======================================================================================
+======================================================================================
+set serveroutput on
+declare 
+cursor c1 is select version
+from v$instance;
+cursor c2 is
+    select
+          host_name
+       ,  instance_name
+       ,  to_char(sysdate, 'HH24:MI:SS DD-MON-YY') currtime
+       ,  to_char(startup_time, 'HH24:MI:SS DD-MON-YY') starttime
+     from v$instance;
+cursor c4 is
+select * from (SELECT count(*) cnt, substr(event,1,50) event
+FROM v$session_wait
+WHERE wait_time = 0
+AND event NOT IN ('smon timer','pipe get','wakeup time manager','pmon timer','rdbms ipc message',
+'SQL*Net message from client')
+GROUP BY event
+ORDER BY 1 DESC) where rownum <6;
+cursor c5 is
+select round(sum(value)/1048576) as sgasize from v$sga;
+cursor c6 is select round(sum(bytes)/1048576) as dbsize
+from v$datafile;
+cursor c7 is select 'top physical i/o process' category, sid,
+       username, total_user_io amt_used,
+       round(100 * total_user_io/total_io,2) pct_used
+from (select b.sid sid, nvl(b.username, p.name) username,
+             sum(value) total_user_io
+      from v$statname c, v$sesstat a,
+           v$session b, v$bgprocess p
+      where a.statistic# = c.statistic#
+      and p.paddr (+) = b.paddr
+      and b.sid = a.sid
+      and c.name in ('physical reads', 'physical writes',
+                     'physical reads direct',
+                     'physical reads direct (lob)',
+                     'physical writes direct',
+                     'physical writes direct (lob)')
+      and b.username not in ('SYS', 'SYSTEM', 'SYSMAN', 'DBSNMP')
+      group by b.sid, nvl(b.username, p.name)
+      order by 3 desc),
+     (select sum(value) total_io
+      from v$statname c, v$sesstat a
+      where a.statistic# = c.statistic#
+      and c.name in ('physical reads', 'physical writes',
+                       'physical reads direct',
+                       'physical reads direct (lob)',
+                       'physical writes direct',
+                       'physical writes direct (lob)'))
+where rownum < 2
+union all
+select 'top logical i/o process', sid, username,
+       total_user_io amt_used,
+       round(100 * total_user_io/total_io,2) pct_used
+from (select b.sid sid, nvl(b.username, p.name) username,
+             sum(value) total_user_io
+      from v$statname c, v$sesstat a,
+           v$session b, v$bgprocess p
+      where a.statistic# = c.statistic#
+      and p.paddr (+) = b.paddr
+      and b.sid = a.sid
+      and c.name in ('consistent gets', 'db block gets')
+      and b.username not in ('SYS', 'SYSTEM', 'SYSMAN', 'DBSNMP')
+      group by b.sid, nvl(b.username, p.name)
+      order by 3 desc),
+     (select sum(value) total_io
+      from v$statname c, v$sesstat a,
+           v$session b, v$bgprocess p
+      where a.statistic# = c.statistic#
+      and p.paddr (+) = b.paddr
+ and b.sid = a.sid
+      and c.name in ('consistent gets', 'db block gets'))
+where rownum < 2
+union all
+select 'top memory process', sid,
+       username, total_user_mem,
+       round(100 * total_user_mem/total_mem,2)
+from (select b.sid sid, nvl(b.username, p.name) username,
+             sum(value) total_user_mem
+      from v$statname c, v$sesstat a,
+           v$session b, v$bgprocess p
+      where a.statistic# = c.statistic#
+      and p.paddr (+) = b.paddr
+      and b.sid = a.sid
+      and c.name in ('session pga memory', 'session uga memory')
+      and b.username not in ('SYS', 'SYSTEM', 'SYSMAN', 'DBSNMP')
+      group by b.sid, nvl(b.username, p.name)
+      order by 3 desc),
+     (select sum(value) total_mem
+      from v$statname c, v$sesstat a
+      where a.statistic# = c.statistic#
+      and c.name in ('session pga memory', 'session uga memory'))
+where rownum < 2
+union all
+select 'top cpu process', sid, username,
+       total_user_cpu,
+       round(100 * total_user_cpu/greatest(total_cpu,1),2)
+from (select b.sid sid, nvl(b.username, p.name) username,
+             sum(value) total_user_cpu
+      from v$statname c, v$sesstat a,
+           v$session b, v$bgprocess p
+      where a.statistic# = c.statistic#
+      and p.paddr (+) = b.paddr
+      and b.sid = a.sid
+      and c.name = 'CPU used by this session'
+      and b.username not in ('SYS', 'SYSTEM', 'SYSMAN', 'DBSNMP')
+      group by b.sid, nvl(b.username, p.name)
+      order by 3 desc),
+     (select sum(value) total_cpu
+      from v$statname c, v$sesstat a,
+           v$session b, v$bgprocess p
+      where a.statistic# = c.statistic#
+      and p.paddr (+) = b.paddr
+      and b.sid = a.sid
+      and c.name = 'CPU used by this session')
+where rownum < 2;
+
+
+cursor c8 is select username, sum(VALUE/100) cpu_usage_sec
+from v$session ss, v$sesstat se, v$statname sn
+where se.statistic# = sn.statistic#
+and name like '%CPU used by this session%'
+and se.sid = ss.sid
+and username is not null
+and username not in ('SYS', 'SYSTEM', 'SYSMAN', 'DBSNMP')
+group by username
+order by 2 desc;
+begin
+dbms_output.put_line ('Database Version');
+dbms_output.put_line ('-----------------');
+for rec in c1
+loop
+dbms_output.put_line(rec.version);
+end loop;
+dbms_output.put_line( chr(13) );
+dbms_output.put_line('Hostname');
+dbms_output.put_line ('----------');
+for rec in c2
+loop
+     dbms_output.put_line(rec.host_name);
+end loop;
+dbms_output.put_line( chr(13) );
+dbms_output.put_line('SGA Size (MB)');
+dbms_output.put_line ('-------------');
+for rec in c5
+loop
+     dbms_output.put_line(rec.sgasize);
+end loop;
+dbms_output.put_line( chr(13) );
+dbms_output.put_line('Database Size (MB)');
+dbms_output.put_line ('-----------------');
+for rec in c6
+loop
+     dbms_output.put_line(rec.dbsize);
+end loop;
+dbms_output.put_line( chr(13) );
+dbms_output.put_line('Instance start-up time');
+dbms_output.put_line ('-----------------------');
+for rec in c2 loop
+ dbms_output.put_line( rec.starttime );
+  end loop;
+dbms_output.put_line( chr(13) );
+  for b in
+    (select total, active, inactive, system, killed
+    from
+       (select count(*) total from v$session)
+     , (select count(*) system from v$session where username is null)
+     , (select count(*) active from v$session where status = 'ACTIVE' and username is not null)
+
+
+     , (select count(*) inactive from v$session where status = 'INACTIVE')
+     , (select count(*) killed from v$session where status = 'KILLED')) loop
+dbms_output.put_line('Active Sessions');
+dbms_output.put_line ('---------------');
+dbms_output.put_line(b.total || ' sessions: ' || b.inactive || ' inactive,' || b.active || ' active, ' || b.system || ' system, ' || b.killed || ' killed ');
+  end loop;
+  dbms_output.put_line( chr(13) );
+ dbms_output.put_line( 'Sessions Waiting' );
+  dbms_output.put_line( chr(13) );
+dbms_output.put_line('Count      Event Name');
+dbms_output.put_line('-----      -----------------------------------------------------');
+for rec in c4 
+loop
+dbms_output.put_line(rec.cnt||'          '||rec.event);
+end loop;
+dbms_output.put_line( chr(13) );
+
+
+dbms_output.put_line('-----      -----------------------------------------------------');
+
+
+dbms_output.put_line('TOP Physical i/o, logical i/o, memory and CPU processes');
+dbms_output.put_line ('---------------');
+for rec in c7
+loop
+dbms_output.put_line (rec.category||': SID '||rec.sid||' User : '||rec.username||': Amount used : '||rec.amt_used||': Percent used: '||rec.pct_used);
+end loop;
+
+
+dbms_output.put_line('------------------------------------------------------------------');
+
+
+dbms_output.put_line('TOP CPU users by usage');
+dbms_output.put_line ('---------------');
+for rec in c8
+loop
+
+
+dbms_output.put_line (rec.username||'--'||rec.cpu_usage_sec);
+dbms_output.put_line ('---------------');
+end loop;
+
+
+end;
+
+
+
+
+======================
+======================
+PHYSICAL SYNC CHECK
+======================
+======================
+
+on Primary:
+--------------
+SELECT THREAD# "Thread",SEQUENCE# "Last Sequence Generated"
+FROM V$ARCHIVED_LOG
+WHERE (THREAD#,FIRST_TIME ) IN (SELECT THREAD#,MAX(FIRST_TIME) FROM V$ARCHIVED_LOG GROUP BY THREAD#)
+ORDER BY 1;
+
+
+On Physical Standby:
+-----------------------
+SELECT ARCH.THREAD# "Thread", ARCH.SEQUENCE# "Last Sequence Received", APPL.SEQUENCE# "Last Sequence Applied", (ARCH.SEQUENCE# - APPL.SEQUENCE#) "Difference"
+FROM
+(SELECT THREAD# ,SEQUENCE# FROM V$ARCHIVED_LOG WHERE (THREAD#,FIRST_TIME ) IN (SELECT THREAD#,MAX(FIRST_TIME) FROM V$ARCHIVED_LOG GROUP BY THREAD#)) ARCH,
+(SELECT THREAD# ,SEQUENCE# FROM V$LOG_HISTORY WHERE (THREAD#,FIRST_TIME ) IN (SELECT THREAD#,MAX(FIRST_TIME) FROM V$LOG_HISTORY GROUP BY THREAD#)) APPL
+WHERE
+ARCH.THREAD# = APPL.THREAD#
+ORDER BY 1;
+
+
+
+on Physical standby:
+--------------------------
+SELECT THREAD#, LOW_SEQUENCE#, HIGH_SEQUENCE# FROM V$ARCHIVE_GAP;
+no rows selected
+
+
+
+
+
+
+
+
+
+
+
+select INDEX_NAME, TABLE_NAME, LAST_ANALYZED, STALE_STATS
+from dba_ind_statistics
+where TABLE_OWNER = 'ARADMIN'
+and STALE_STATS = 'YES' 
+order by LAST_ANALYZED;
+
+
+
+select count(*) from dba_tab_statistics where STALE_STATS='YES';
+
+
+select OWNER, TABLE_NAME, LAST_ANALYZED from dba_tab_statistics where STALE_STATS='YES' and owner='ARADMIN' order by LAST_ANALYZED;
+
+
+
+
+
+
+select to_date('1970/01/01','YYYY/MM/DD')+LAST_MODIFIED_DATE/86400 from nim_network_element;
+
+
+DESC nim_network_element
+SELECT LAST_MODIFIED_DATE from nim_network_element;
+
+select count(1) from NIM_NETWORK_ELEMENT where to_date('01/01/1970','MM/DD/YYYY')+create_date/86400 >= to_date('01/01/2012','MM/DD/YYYY') 
+and action_code is null;
+
+
+
+
+
+
+
+select min(DATE_SENT) from ar_system_email_messages where SEND_MESSAGE=3 and MESSAGE_TYPE=1;
+
+select MIN(to_date('1970/01/01','YYYY/MM/DD')+DATE_SENT/86400) from ar_system_email_messages where SEND_MESSAGE=3 and MESSAGE_TYPE=1;
+
+
+
+
+
+
+
