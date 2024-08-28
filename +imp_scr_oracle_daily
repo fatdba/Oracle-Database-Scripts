@@ -7,18 +7,15 @@ OK (0 msec)
 OK (0 msec)
 OK (0 msec)
 
-to dial conference from cellphone
-======================================
-18002006998 > 436781 > 85170078#
 
 
 TO CREATE A GIANT SIZED FILE
 ======================================
-[oracle@osekilx126 /vol5/oracle/one_tm_arc]# dd if=/dev/zero of=TESTFILE.DIXIT bs=1024 count=45G
+[oracle@ /vol5/oracle/one_tm_arc]# dd if=/dev/zero of=TESTFILE.DIXIT bs=1024 count=45G
 
 [1]+  Stopped                 dd if=/dev/zero of=TESTFILE.DIXIT bs=1024 count=45G
 
-[oracle@osekilx126 /vol5/oracle/one_tm_arc]# bg
+[oracle@ /vol5/oracle/one_tm_arc]# bg
 [1]+ dd if=/dev/zero of=TESTFILE.DIXIT bs=1024 count=45G &
 
 
@@ -53,35 +50,6 @@ mongo db access:
 /opt/dixit/mongodb/
 
 
-MARIA DB ACCESS:
-======================
-
-
-METALINK DETAILS:
-==================================================
-Support Identifier	10399934
-Account Name	Telefonaktiebolaget L M Ericsson
-Customer support Line: 	
-Phone: +1.800.223.1711 option 1 and then option 2 
-
-
-
-12oem UAT URL:
-=====================
-www-proxy.ericsson.se
-8080
-https://153.88.80.194:7802/em
-sysman
-kistaOem99
-go to Citrix Mozilla--> tools --> options --> advanced --> network --> 
-use Manual proxy configuration
-and enter there  
-www-proxy.ericsson.se
-port 8080
-
-bmcpatrol agent
-userid: nmcsa011
-paas: h4NTt47Y
 
 Package to fix internet issues - connectivity
 ===============================================
