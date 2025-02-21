@@ -27,7 +27,7 @@ col density	format a04	head "Dens%" trunc
 
 break on owner on tabname
 
-select /*+ ordered */ 
+select
   	 u.name  				owner
   	 ,t.table_name  				tabname
   	 ,o.name  				idxname
@@ -41,7 +41,7 @@ select /*+ ordered */
   	,i.leafcnt 						lfcnt
   	,floor((1 - i.pctfree$/100) * i.leafcnt - i.rowcnt * (sum(h.avgcln) + 11) / (p.value - 66 - i.initrans * 24)  ) 			xtrblk
   	,round(seg.bytes/(1024*1024)) 				currmb
-  	,(1 + i.pctfree$/100) * (i.rowcnt * (sum(h.avgcln) + 11) / (i.leafcnt * (p.value - 66 - i.initrans * 24)) * seg.bytes/(1024*1204)) 	newmb
+  	,(1 + i.pctfree$/100) * (i.rowcnt * (sum(h.avgcln) + 11) / (i.leafcnt * (p.value - 66 - i.initrans * 24)) * seg.bytes/(1024*1024)) 	newmb
 from 	 sys.ind$  		i
   	,sys.icol$  		ic
   	,sys.hist_head$  	h
